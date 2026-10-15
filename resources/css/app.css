@@ -9,6 +9,11 @@
 @theme {
     --font-heading: 'Poppins', sans-serif;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --color-background: #FEECC6;
+    --color-card: #FFFAE7;
+    --color-teks: #2D1807;
+    --color-primary: #FFE473;
+    --color-title: #3F4932;
     --color-pastel-50: #FFFDF0;
     --color-pastel-100: #FFF9C4;
     --color-pastel-200: #FDF1A9;
