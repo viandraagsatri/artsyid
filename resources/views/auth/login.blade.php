@@ -14,7 +14,7 @@
             <div class="flex flex-col gap-5">
                 <div class="relative w-full">
                     <div class="absolute inset-y-2 left-0 flex items-center pl-5 pointer-events-none">
-                        <i class="fa-solid fa-user text-md text-teks"></i>
+                        <i class="fa-solid fa-envelope text-md text-teks"></i>
                     </div>
                     <input type="email" class="pl-12 bg-amber-50 w-90 py-3 px-3 rounded-2xl border border-teks focus:outline-none focus:border-teks placeholder:font-heading placeholder:text-sm placeholder:text-teks placeholder:opacity-50 placeholder:font-medium" placeholder="Masukkan email">
                 </div>
@@ -22,11 +22,11 @@
                     <div class="absolute inset-y-2 left-0 flex items-center pl-5 pointer-events-none">
                         <i class="fa-solid fa-lock text-md text-teks"></i>
                     </div>
-                    <input type="password" class="pl-12 bg-amber-50 w-90 py-3 px-3 rounded-2xl border border-teks focus:outline-none focus:border-teks placeholder:font-heading placeholder:text-sm placeholder:text-teks placeholder:opacity-50 placeholder:font-medium" placeholder="Masukkan password">
-                    <div class="absolute inset-y-2 right-4 flex items-center pl-3 pointer-events-none">
+                    <input type="password" name="password" id="password" required class="pl-12 pr-12 bg-amber-50 w-90 py-3 px-3 rounded-2xl border border-teks focus:outline-none focus:border-teks placeholder:font-heading placeholder:text-sm placeholder:text-teks placeholder:opacity-50 placeholder:font-medium" placeholder="Masukkan password">
+                    <button type="button" id="togglePassword" aria-label="Tampilkan password" class="absolute inset-y-2 right-4 flex items-center cursor-pointer">
                         <i class="fa-solid fa-eye text-md text-teks"></i>
-                    </div>
-                </div>
+                    </button>
+                </div>  
             </div>
             <a class="text-sm w-full text-right teks-isi font-medium" href="{{ route('lupa.password') }}">Lupa password?</a>
 
@@ -34,9 +34,20 @@
 
             <div class="flex w-full gap-1 justify-center">
                 <span class="text-sm teks-isi">Belum Punya akun? </span>
-                <a href="#" class="text-sm font-medium teks-isi">Daftar</a>
+                <a href="{{ route('register') }}" class="text-sm font-medium teks-isi">Daftar</a>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function () {
+        var input = document.getElementById('password');
+        var icon = this.querySelector('i');
+        var show = input.type === 'password';
+        input.type = show ? 'text' : 'password';
+        icon.classList.toggle('fa-eye', !show);
+        icon.classList.toggle('fa-eye-slash', show);
+    });
+</script>
 @endsection
