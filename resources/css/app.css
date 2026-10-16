@@ -9,10 +9,10 @@
 @theme {
     --font-heading: 'Poppins', sans-serif;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --color-background: #FEECC6;
-    --color-card: #FFFAE7;
-    --color-teks: #2D1807;
-    --color-primary: #FFE473;
+    --color-background: #FFEB97;
+    --color-card: #FFF7D9;
+    --color-teks: #483D34;
+    --color-primary: #FFE267;
     --color-title: #3F4932;
     --color-pastel-50: #FFFDF0;
     --color-pastel-100: #FFF9C4;
@@ -50,16 +50,22 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     color: var(--color-slate-dark);
 }
 
+.teks-isi {
+    font-family: var(--font-heading);
+    color: var(--color-teks);
+}
+
 .btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading);
+    font-size: small;
     font-weight: 600;
     padding: 0.625rem 1.25rem;
     border-radius: 0.75rem;
-    background-color: var(--color-pastel-200);
-    color: var(--color-slate-dark);
+    background-color: var(--color-primary);
+    color: var(--color-teks);
     transition: all 0.2s ease-in-out;
 }
 .btn-primary:hover {
