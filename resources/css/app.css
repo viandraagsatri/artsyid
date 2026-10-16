@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -8,7 +7,7 @@
 
 @theme {
     --font-heading: 'Poppins', sans-serif;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --color-background: #FFEB97;
     --color-card: #FFF7D9;
     --color-teks: #483D34;
@@ -40,9 +39,9 @@
 }
 
 body {
-    font-family: var(--font-sans);
+    font-family: var(--font-heading);
     color: var(--color-slate-body);
-    background-color: var(--color-bg-light);
+    background-color: var(--color-pastel-100);
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading {
