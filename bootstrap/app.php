@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\ArtistMiddleware;
+use App\Http\Middleware\AuthMiddleware;
+use App\Http\Middleware\ClientMiddleware;
+use App\Http\Middleware\GuestMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -11,7 +16,13 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'auth' => AuthMiddleware::class,
+            'guest' => GuestMiddleware::class,
+            'auth.client' => ClientMiddleware::class,
+            'auth.artist' => ArtistMiddleware::class,
+            'auth.admin' => AdminMiddleware::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

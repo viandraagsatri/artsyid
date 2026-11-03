@@ -9,6 +9,14 @@
             <h1 class="text-teks font-semibold text-xl">Welcome to Artsy Id</h1>
             <img src="{{ asset('images/logo.png') }}" alt="" class="object-cover w-20 h-20 rounded-full">
         </div>
+        <div>
+            @if (session('success'))
+                <div class="bg-green-500 text-white px-4 py-2 rounded-lg">{{ session('success') }}</div>
+            @endif
+            @if (session('error'))
+                <div class="bg-red-500 text-white px-4 py-2 rounded-lg">{{ session('error') }}</div>
+            @endif
+        </div>
         <form action="{{ route('login.post') }}" method="POST" class="flex flex-col gap-5">
             @csrf
             <div class="flex flex-col gap-5">
@@ -16,7 +24,7 @@
                     <div class="absolute inset-y-2 left-0 flex items-center pl-5 pointer-events-none">
                         <i class="fa-solid fa-envelope text-md text-teks"></i>
                     </div>
-                    <input type="email" class="pl-12 bg-amber-50 w-90 py-3 px-3 rounded-2xl border border-teks focus:outline-none focus:border-teks placeholder:font-heading placeholder:text-sm placeholder:text-teks placeholder:opacity-50 placeholder:font-medium" placeholder="Masukkan email">
+                    <input type="email" name="email" id="email" required class="pl-12 bg-amber-50 w-90 py-3 px-3 rounded-2xl border border-teks focus:outline-none focus:border-teks placeholder:font-heading placeholder:text-sm placeholder:text-teks placeholder:opacity-50 placeholder:font-medium" placeholder="Masukkan email">
                 </div>
                 <div class="relative w-full">
                     <div class="absolute inset-y-2 left-0 flex items-center pl-5 pointer-events-none">
