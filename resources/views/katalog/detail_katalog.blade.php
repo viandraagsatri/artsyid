@@ -22,9 +22,7 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-
                 <div class="lg:col-span-8 flex flex-col gap-8">
-
                     <div class="bg-white rounded-2xl border border-stone-200/90 shadow-xs p-4 sm:p-6 overflow-hidden">
                         <div
                             class="relative aspect-16/10 sm:aspect-video bg-stone-100 rounded-xl overflow-hidden border border-stone-100">
@@ -527,7 +525,6 @@
                     </div>
 
                 </div>
-
             </div>
         </div>
     </main>
