@@ -17,7 +17,7 @@ class ClientMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::user()->role !== 'user') {
-            return redirect()->route('home');
+            return redirect()->route('dashboard');
         }
         return $next($request);
     }

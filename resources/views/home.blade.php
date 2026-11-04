@@ -637,4 +637,6 @@
             </div>
         </section>
     </main>
+    
+    @include('layouts.footer')
 @endsection

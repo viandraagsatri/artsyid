@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DaftarArtist;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Katalog;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,7 @@ Route::group(['middleware' => 'guest'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/register/artist', [DaftarArtist::class, 'index'])->name('register.artist');
 });
 

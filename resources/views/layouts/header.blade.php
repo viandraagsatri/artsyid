@@ -32,7 +32,7 @@
             </div>
 
             <div class="flex items-center gap-2">
-                <a href="{{ route('register') }}"
+                <a href="{{ route('register.artist') }}"
                     class="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-dark bg-stone-100 hover:bg-pastel-100 border border-stone-200 transition-all font-heading">
                     <span>Daftar Jadi Artist</span>
                 </a>
@@ -51,7 +51,7 @@
                                 </div>
                             @endif
                             <span
-                                class="text-xs font-bold text-slate-dark hidden sm:inline max-w-[120px] truncate font-heading">{{ auth()->user()->name }}</span>
+                                class="text-xs font-bold text-slate-dark hidden sm:inline max-w-30 truncate font-heading">{{ auth()->user()->name }}</span>
                         </a>
                     </div>
                 @else

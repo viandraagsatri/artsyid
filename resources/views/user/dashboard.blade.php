@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('layouts.header')
+    <main class="bg-bg-light min-h-screen text-slate-body font-sans">
+        <div>
+            
+        </div>
+
+    </main>
 @endsection

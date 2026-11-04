@@ -17,7 +17,7 @@ class ArtistMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::user()->role !== 'artist') {
-            return redirect()->route('home');
+            return redirect()->route('dashboard');
         }
         return $next($request);
     }
