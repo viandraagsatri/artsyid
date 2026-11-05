@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/register/artist', [DaftarArtist::class, 'index'])->name('register.artist');
+    Route::post('/register/artist', [DaftarArtist::class, 'store'])->name('register.artist.post');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
