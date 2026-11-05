@@ -78,6 +78,9 @@
                         <input type="password" name="password_confirmation" id="password_confirmation" required autocomplete="new-password"
                             class="pl-12 pr-12 bg-amber-50 w-90 py-3 px-3 rounded-2xl border border-teks focus:outline-none focus:border-teks placeholder:font-heading placeholder:text-sm placeholder:text-teks placeholder:opacity-50 placeholder:font-medium"
                             placeholder="Konfirmasi password">
+                        @error('password_confirmation')
+                            <p class="text-xs text-red-600 mt-1 pl-2">{{ $message }}</p>
+                        @enderror
                         <button type="button" data-toggle="password_confirmation" aria-label="Tampilkan konfirmasi password"
                             class="absolute inset-y-2 right-4 flex items-center cursor-pointer">
                             <i class="fa-solid fa-eye text-md text-teks"></i>

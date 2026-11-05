@@ -20,23 +20,29 @@
         <form action="{{ route('login.post') }}" method="POST" class="flex flex-col gap-5">
             @csrf
             <div class="flex flex-col gap-5">
-                <div class="relative w-full">
+                <div class="relative w-full space-y-1">
                     <div class="absolute inset-y-2 left-0 flex items-center pl-5 pointer-events-none">
                         <i class="fa-solid fa-envelope text-md text-teks"></i>
                     </div>
-                    <input type="email" name="email" id="email" required class="pl-12 bg-amber-50 w-90 py-3 px-3 rounded-2xl border border-teks focus:outline-none focus:border-teks placeholder:font-heading placeholder:text-sm placeholder:text-teks placeholder:opacity-50 placeholder:font-medium" placeholder="Masukkan email">
+                    <input type="email" name="email" id="email" required class="pl-12 bg-amber-50 w-90 py-3 px-3 rounded-2xl border border-teks focus:outline-none focus:border-teks placeholder:font-heading placeholder:text-sm placeholder:text-teks placeholder:opacity-50 placeholder:font-medium" placeholder="Masukkan email" value="{{ old('email') }}">
+                    @error('email')
+                        <span class="text-xs text-red-600 mt-1 pl-2">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="relative w-full">
                     <div class="absolute inset-y-2 left-0 flex items-center pl-5 pointer-events-none">
                         <i class="fa-solid fa-lock text-md text-teks"></i>
                     </div>
-                    <input type="password" name="password" id="password" required class="pl-12 pr-12 bg-amber-50 w-90 py-3 px-3 rounded-2xl border border-teks focus:outline-none focus:border-teks placeholder:font-heading placeholder:text-sm placeholder:text-teks placeholder:opacity-50 placeholder:font-medium" placeholder="Masukkan password">
+                    <input type="password" name="password" id="password" required class="pl-12 pr-12 bg-amber-50 w-90 py-3 px-3 rounded-2xl border border-teks focus:outline-none focus:border-teks placeholder:font-heading placeholder:text-sm placeholder:text-teks placeholder:opacity-50 placeholder:font-medium" placeholder="Masukkan password"  value="{{ old('password') }}">
+                    @error('password')
+                        <span class="text-xs text-red-600 mt-1 pl-2">{{ $message }}</span>
+                    @enderror
                     <button type="button" id="togglePassword" aria-label="Tampilkan password" class="absolute inset-y-2 right-4 flex items-center cursor-pointer">
                         <i class="fa-solid fa-eye text-md text-teks"></i>
                     </button>
                 </div>  
             </div>
-            <a class="text-sm w-full text-right teks-isi font-medium" href="{{ route('lupa.password') }}">Lupa password?</a>
+            <a class="text-sm w-full text-right teks-isi font-medium" href="{{ route('lupa-password') }}">Lupa password?</a>
 
             <button type="submit" class="btn-primary">Masuk</button>
 

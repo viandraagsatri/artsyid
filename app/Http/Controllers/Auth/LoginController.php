@@ -13,20 +13,30 @@ class LoginController extends Controller
     }
 
     public function store(Request $request) {
-        $validation = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        $request->validate(
+            [
+                'email' => 'required|email',
+                'password' => 'required',
+            ],
+            [
+                'email.required' => 'Email wajib diisi!',
+                'email.email' => 'Format email tidak valid!',
+                'password.required' => 'Password wajib diisi!',
+            ]
+        );
 
-        if (!$validation) return back()->with('error', 'Login gagal!');
-
-        $credential = $request->only('email', 'password');
-
-        if (Auth::attempt($credential)) {
+        if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
-            return redirect()->route('home')->with('success', 'Login berhasil!');
+            return redirect()->intended('dashboard');
         }
 
         return back()->with('error', 'Email atau password salah');
+    }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login');
     }
 }

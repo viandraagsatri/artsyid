@@ -17,11 +17,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
-            'auth' => AuthMiddleware::class,
-            'guest' => GuestMiddleware::class,
-            'auth.client' => ClientMiddleware::class,
-            'auth.artist' => ArtistMiddleware::class,
-            'auth.admin' => AdminMiddleware::class,
+            'client' => ClientMiddleware::class,
+            'artist' => ArtistMiddleware::class,
+            'admin' => AdminMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

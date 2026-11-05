@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LupaPasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DaftarArtist;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Katalog;
@@ -15,12 +15,13 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/login', [LoginController::class, 'store'])->name('login.post');
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
     Route::post('/register', [RegisterController::class, 'store'])->name('register.post');
-    Route::get('/lupa.password', [AuthController::class, 'lupaPassword'])->name('lupa.password');
+    Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('lupa-password');
 });
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/register/artist', [DaftarArtist::class, 'index'])->name('register.artist');
     Route::post('/register/artist', [DaftarArtist::class, 'store'])->name('register.artist.post');
 });
