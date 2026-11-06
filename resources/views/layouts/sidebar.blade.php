@@ -276,24 +276,24 @@
         </nav>
     </div>
 
-    <div class="p-3.5 border-t border-stone-100 bg-stone-50/70 shrink-0">
-        <form action="{{ route('logout') }}" method="POST">
+    <div class="p-3.5 border-t border-stone-100 bg-stone-50/70">
+        <form action="{{ route('logout') }}" method="POST" class="w-full">
             @csrf
             <button type="submit"
-                class="cursor-pointer group flex items-center justify-between gap-3 p-2 rounded-xl bg-white border border-stone-200/80 shadow-xs">
+                class="cursor-pointer group flex items-center justify-between gap-3 p-2 rounded-xl bg-white border border-stone-200/80 shadow-xs w-full">
                 <div class="flex items-center gap-2.5 min-w-0">
                     @if(auth()->check() && auth()->user()->avatar_url)
                         <img src="{{ auth()->user()->avatar_url }}" alt="{{ auth()->user()->name }}"
-                            class="w-8 h-8 rounded-full object-cover ring-2 ring-pastel-300 shrink-0">
+                            class="w-8 h-8 rounded-full object-cover ring-2 ring-pastel-300">
                     @else
                         <div
-                            class="w-8 h-8 rounded-full bg-pastel-300 text-slate-dark flex items-center justify-center font-bold text-xs font-heading shrink-0">
+                            class="w-8 h-8 rounded-full bg-pastel-300 text-slate-dark flex items-center justify-center font-bold text-xs font-heading">
                             {{ strtoupper(substr(auth()->user()?->name ?? 'User', 0, 1)) }}
                         </div>
                     @endif
                     <div class="flex flex-col items-start min-w-0">
                         <span
-                            class="text-xs font-bold text-slate-dark group-hover:text-red-600! transition-colors truncate font-heading leading-tight">
+                            class="text-xs font-bold text-slate-dark group-hover:text-red-600! transition-colors truncate font-heading leading-tight w-full">
                             {{ auth()->user()?->name ?? 'Pengguna Artsy' }}
                         </span>
                         <span class="text-[10px] text-slate-muted truncate">
@@ -302,9 +302,9 @@
                     </div>
                 </div>
 
-                <div class="shrink-0">
+                <div>
                     <div
-                        class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 group-hover:text-rose-600 group-hover:bg-rose-50 transition cursor-pointer">
+                        class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 group-hover:text-rose-600 group-hover:bg-rose-50 transition cursor-pointer shrink-0">
                         <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
                     </div>
                 </div>

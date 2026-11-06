@@ -14,7 +14,7 @@
                 <div class="flex flex-col px-5 py-7">
                     <h3 class="font-bold text-2xl">Chibi Character Icon</h3>
                     <span class="font-medium opacity-75 text-xl">Mulai dari Rp. 50.000</span>
-                    <a href="" class="font-bold text-lg bg-slate-dark text-white rounded-full w-fit px-5 py-2 mt-8">Lihat Detail -></a>
+                    <a href="{{ route('katalog.detail', ['id' => 1]) }}" class="font-bold text-lg bg-slate-dark text-white rounded-full w-fit px-5 py-2 mt-8">Lihat Detail -></a>
                 </div>
             </div>
             <div class="flex flex-row items-start w-full h-fit rounded-xl bg-amber-100 overflow-hidden">

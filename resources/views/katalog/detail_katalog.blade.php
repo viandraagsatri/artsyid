@@ -288,16 +288,7 @@
                                 </div>
                             </div>
 
-                            <div
-                                class="p-4 bg-stone-50 rounded-xl border border-stone-200/80 text-xs text-slate-body leading-relaxed">
-                                <h4 class="font-bold text-slate-dark font-heading mb-1.5">Hak Cipta &amp; Lisensi:</h4>
-                                <p class="text-slate-muted">
-                                    Karya ini secara bawaan berlisensi untuk <strong>Penggunaan Pribadi</strong> seperti
-                                    foto profil, avatar media sosial, atau cetak koleksi pribadi. Jika ingin menggunakan
-                                    karya ini untuk keperluan komersil (VTuber, merchandise komersial, promosi berbayar,
-                                    YouTube monetized), silakan pilih opsi add-on <em>Lisensi Komersial</em> di bawah.
-                                </p>
-                            </div>
+                           
                         </div>
 
                         <div id="tab-ulasan" class="p-6 space-y-4 hidden">
@@ -493,7 +484,7 @@
                             <a href="{{ route('register') }}"
                                 class="w-full py-3.5 px-4 rounded-xl bg-pastel-200 hover:bg-pastel-300 border border-pastel-300 text-slate-dark font-bold text-xs sm:text-sm font-heading shadow-xs hover:shadow-sm transition flex items-center justify-center gap-2 text-center">
                                 <i class="fa-solid fa-paper-plane text-xs"></i>
-                                <span>Lanjut ke Formulir Pemesanan</span>
+                                <span>Lanjut Memesan</span>
                             </a>
 
                             <p class="text-[11px] text-center text-slate-muted">
@@ -502,27 +493,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-2xl border border-stone-200/80 p-5 shadow-xs space-y-3">
-                        <h4
-                            class="text-xs font-bold uppercase tracking-wider text-slate-dark font-heading flex items-center gap-2">
-                            <i class="fa-solid fa-lock text-amber-500"></i>
-                            Standar Keamanan Artsy ID
-                        </h4>
-                        <ul class="space-y-2 text-xs text-slate-muted">
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                                <span>Pencairan dana diawasi manual oleh Admin Platform.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                                <span>Proteksi draf ber-watermark diagonal resolusi penuh.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                                <span>Sistem laporan sengketa &amp; garansi refund bila terjadi kecurangan.</span>
-                            </li>
-                        </ul>
-                    </div>
+                    
 
                 </div>
             </div>
