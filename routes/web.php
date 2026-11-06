@@ -20,6 +20,10 @@ Route::group(['middleware' => 'guest'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/profile/katalog', [ProfileController::class, 'katalog'])->name('profile.katalog');
+    Route::get('/profile/portofolio', [ProfileController::class, 'portofolio'])->name('profile.portofolio');
+    Route::get('/profile/tos', [ProfileController::class, 'tos'])->name('profile.tos');
+    Route::get('/profile/setting', [ProfileController::class, 'settings'])->name('profile.setting');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/register/artist', [DaftarArtist::class, 'index'])->name('register.artist');

@@ -3,11 +3,11 @@
 @section('content')
 <div class="flex flex-col bg-bg-light">
     <!-- banner -->
-    <img src="{{ asset('images/logo.png') }}" alt="" class="w-full h-64 object-cover">
+    <img src="https://i.pinimg.com/1200x/1a/47/ca/1a47ca1c4a332a7c4c7b4d7581704ef6.jpg" alt="" class="w-full h-64 object-cover">
     <div class="grid grid-cols-12 gap-8 mt-8 pl-10 pr-10 relative">
         <!-- kiri -->
         <div class="col-span-4 bg-bg-light p-6 flex flex-col gap-2">
-            <img src="{{ asset('images/logo.png') }}" alt="" class="w-36 h-36 object-cover rounded-full absolute -top-28">
+            <img src="https://i.pinimg.com/1200x/97/4e/a3/974ea3063a4d62048c60ab72a4aa4134.jpg" alt="" class="w-36 h-36 object-cover rounded-full absolute -top-28">
             <div class="pt-7 pb-4">
                 <h2 class=" font-bold text-slate-dark text-3xl">Acery</h2>
                 <span class=" font-bold text-slate-body opacity-60">@Aceryy</span>
@@ -19,10 +19,10 @@
             <!-- tab -->
             <div class="border-b border-gray-200 mb-6">
                 <nav class="flex gap-6">
-                    <a href="" class="pb-2 border-b-2 border-pastel-200 font-semibold text-slate-dark">Commission</a>
-                    <a href="" class="pb-2 text-slate-muted hover:text-slate-dark">Portofolio</a>
+                    <a href="{{ route('profile.katalog') }}" class="pb-2 border-b-2 border-pastel-200 font-semibold text-slate-dark">Commission</a>
+                    <a href="{{ route('profile.portofolio') }}" class="pb-2 text-slate-muted hover:text-slate-dark">Portofolio</a>
                     <a href="" class="pb-2 text-slate-muted hover:text-slate-dark">Terms of Service</a>
-                    <a href="" class="pb-2 text-slate-muted hover:text-slate-dark">Setting</a>
+                    <a href="{{ route('profile.setting') }}" class="pb-2 text-slate-muted hover:text-slate-dark">Setting</a>
                 </nav>
             </div>
             <div>
