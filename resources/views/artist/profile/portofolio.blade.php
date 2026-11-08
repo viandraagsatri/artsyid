@@ -1,4 +1,5 @@
-@extends('layouts.profile_header')
+@extends('layouts.profile_layout')
+
 @section('profile_content')
 <div class="grid grid-cols-12 gap-5">
     <div class="flex flex-col col-span-4 gap-5">

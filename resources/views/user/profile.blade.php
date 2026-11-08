@@ -1,4 +1,4 @@
-@extends('layouts.profile_header')
+@extends('layouts.profile_layout')
 
 @section('profile_content')
 <div class="flex flex-col items-center gap-6">
