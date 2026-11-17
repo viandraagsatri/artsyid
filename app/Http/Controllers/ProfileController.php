@@ -6,14 +6,18 @@ use App\Models\User;
 use App\Models\ArtistProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
+    
     public function index() {
         $role = Auth::user()->role;
+        $tanggalGabung = Auth::user() -> created_at;
+        $tanggalGabungFormated = Carbon::parse($tanggalGabung)->locale('id')->translatedFormat('d F Y');
 
         if ($role == 'user') {
-            return view('user.profile');
+            return view('user.profile', compact('tanggalGabungFormated'));
         } elseif ($role == 'admin') {
             return view('admin.profile');
         } elseif ($role == 'artist') {
@@ -25,25 +29,34 @@ class ProfileController extends Controller
 
     public function katalog() 
     {
+        $tanggalGabung = Auth::user() -> created_at;
+        $tanggalGabungFormated = Carbon::parse($tanggalGabung)->locale('id')->translatedFormat('d F Y');
+        
         if (Auth::user()->role !== 'artist') {
             return redirect()->route('profile');
         }
 
-        return view('artist.profile.katalog');
+        return view('artist.profile.katalog', compact('tanggalGabungFormated'));
     }
 
     public function portofolio() 
     {
+        $tanggalGabung = Auth::user() -> created_at;
+        $tanggalGabungFormated = Carbon::parse($tanggalGabung)->locale('id')->translatedFormat('d F Y');
+        
         if (Auth::user()->role !== 'artist') {
             return redirect()->route('profile');
         }
 
-        return view('artist.profile.portofolio');
+        return view('artist.profile.portofolio', compact('tanggalGabungFormated'));
     }
 
     public function settings() 
     {
-        return view('artist.profile.setting');
+        $tanggalGabung = Auth::user() -> created_at;
+        $tanggalGabungFormated = Carbon::parse($tanggalGabung)->locale('id')->translatedFormat('d F Y');
+        
+        return view('artist.profile.setting', compact('tanggalGabungFormated'));
     }
 
     public function updateProfile(Request $request)
@@ -94,6 +107,8 @@ class ProfileController extends Controller
 
         return back()->with('success', 'Password berhasil diubah!');
     }
+
+
 
     // public function getPortofolio()
     // {

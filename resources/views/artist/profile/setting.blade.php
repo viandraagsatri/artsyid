@@ -1,7 +1,7 @@
 @extends('layouts.profile_layout')
 
 @section('profile_content')
-<div class="flex flex-col gap-10 pt-5">
+<div class="flex flex-col gap-15 pt-5">
     <div class="flex justify-between items-center">
         <div>
             <span class="font-semibold font-heading text-md">Edit Profile</span>
@@ -23,6 +23,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
         </summary>
+        <br>
         <div class="bg-slate-dark/5 rounded-lg p-4 space-y-5">
             <div class="flex flex-col gap-10">
                 <div>
@@ -44,19 +45,20 @@
     </details>
     
     <div>
-        <span>More</span>
-        <a>Nonaktifkan akun</a>
+        <a href="#" class="w-full inline-block px-4 py-2 text-sm text-center font-medium text-red-600 bg-red-500/10 border border-red-500 rounded-4xl hover:bg-red-500/20 transition-colors">
+           Keluar
+        </a>
     </div>
 </div>
 
 <!-- model edit profile -->
-<div id="editProfileModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+<div id="editProfileModal" class="fixed w-full h-full inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
     
-    <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl p-6 shadow-2xl relative text-slate-100">
+    <div class="top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-bg-light w-full max-w-lg rounded-2xl p-6 shadow-2xl relative text-slate-100">
         
-        <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
+        <div class="flex justify-between items-center pb-3 mb-4 border-b border-slate-dark">
             <h3 class="font-heading font-bold text-lg">Edit Profil</h3>
-            <button onclick="closeEditModal()" type="button" class="text-slate-400 hover:text-white text-xl font-bold">
+            <button onclick="closeEditModal()" type="button" class="text-slate-dark/80 hover:text-slate-dark text-xl font-bold">
                 &times;
             </button>
         </div>
@@ -66,17 +68,17 @@
             @method('PUT')
 
             <div>
-                <label class="block text-sm font-semibold mb-1 text-slate-300">Nama Tampilan</label>
-                <input type="text" name="name" value="{{ Auth::user()->name }}" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-slate-100 focus:outline-none focus:border-primary">
+                <label class="block text-sm font-semibold mb-1 text-slate-dark">Nama Tampilan</label>
+                <input type="text" name="name" value="{{ Auth::user()->name }}" class="w-full bg-slate-dark/15  rounded-xl px-4 py-2 text-slate-dark focus:outline-none focus:border-primary">
             </div>
 
             <div>
-                <label class="block text-sm font-semibold mb-1 text-slate-300">Bio</label>
-                <textarea name="bio" rows="3" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-slate-100 focus:outline-none focus:border-primary">{{ Auth::user()->bio ?? '' }}</textarea>
+                <label class="block text-sm font-semibold mb-1 text-slate-dark">Bio</label>
+                <textarea name="bio" rows="3" class="w-full bg-slate-dark/15 rounded-xl px-4 py-2 text-slate-dark focus:outline-none focus:border-primary">{{ Auth::user()->artistProfile->bio ?? '' }}</textarea>
             </div>
 
             <div class="flex justify-end gap-3 pt-4 border-t border-slate-800">
-                <button type="button" onclick="closeEditModal()" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-full font-semibold text-sm transition-colors">
+                <button type="button" onclick="closeEditModal()" class="px-5 py-2 bg-slate-dark/15 hover:bg-slate-dark text-slate-dark/50 hover:text-white rounded-full font-semibold text-sm transition-colors">
                     Batal
                 </button>
                 <button type="submit" class="btn-primary">
@@ -90,11 +92,11 @@
 <!-- ubah pw modal -->
 <div id="editPwModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
     
-    <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl p-6 shadow-2xl relative text-slate-100">
+    <div class="bg-bg-light w-full max-w-lg rounded-2xl p-6 shadow-2xl relative text-slate-100">
         
         <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
             <h3 class="font-heading font-bold text-lg">Ubah Password</h3>
-            <button onclick="closeUbahPwModal()" type="button" class="text-slate-400 hover:text-white text-xl font-bold">
+            <button onclick="closeUbahPwModal()" type="button" class="text-slate-dark/80 hover:text-slate-dark text-xl font-bold">
                 &times;
             </button>
         </div>
@@ -104,22 +106,22 @@
             @method('PUT')
 
             <div>
-                <label class="block text-sm font-semibold mb-1 text-slate-300">Password Lama</label>
-                <input type="password" name="current_password" placeholder="Masukkan password lama" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-slate-100 focus:outline-none focus:border-primary">
+                <label class="block text-sm font-semibold mb-1 text-slate-dark">Password Lama</label>
+                <input type="password" name="current_password" placeholder="Masukkan password lama" class="w-full bg-slate-800/15 rounded-xl px-4 py-2 text-slate-dark focus:outline-none focus:border-primary">
             </div>
             
             <div>
-                <label class="block text-sm font-semibold mb-1 text-slate-300">Password Baru</label>
-                <input type="password" name="password" placeholder="Masukkan password baru" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-slate-100 focus:outline-none focus:border-primary">
+                <label class="block text-sm font-semibold mb-1 text-slate-dark">Password Baru</label>
+                <input type="password" name="password" placeholder="Masukkan password baru" class="w-full bg-slate-800/15 rounded-xl px-4 py-2 text-slate-dark focus:outline-none focus:border-primary">
             </div>
 
             <div>
-                <label class="block text-sm font-semibold mb-1 text-slate-300">Konfirmasi Password Baru</label>
-                <input type="password" name="password_confirmation" required placeholder="Ketik ulang password baru" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-slate-100 focus:outline-none focus:border-primary">
+                <label class="block text-sm font-semibold mb-1 text-slate-dark">Konfirmasi Password Baru</label>
+                <input type="password" name="password_confirmation" required placeholder="Ketik ulang password baru" class="w-full bg-slate-800/15 rounded-xl px-4 py-2 text-slate-dark focus:outline-none focus:border-primary">
             </div>
 
             <div class="flex justify-end gap-3 pt-4 border-t border-slate-800">
-                <button type="button" onclick="closeUbahPwModal()" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-full font-semibold text-sm transition-colors">
+                <button type="button" onclick="closeUbahPwModal()" class="px-5 py-2 bg-slate-dark/15 hover:bg-slate-dark text-slate-dark/50 hover:text-slate-100 rounded-full font-semibold text-sm transition-colors">
                     Batal
                 </button>
                 <button type="submit" class="btn-primary">

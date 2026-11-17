@@ -12,15 +12,14 @@
         <div class="col-span-4 bg-bg-light p-10 flex flex-col gap-2">
             <img src="https://i.pinimg.com/1200x/97/4e/a3/974ea3063a4d62048c60ab72a4aa4134.jpg" alt="" class="w-36 h-36 object-cover rounded-full absolute -top-28 border-3 border-slate-dark">
             <div class="pt-7 pb-4">
-                <h2 class=" font-bold text-slate-dark text-3xl">Acery</h2>
-                <p class=" font-bold text-slate-dark opacity-50">@Aceryy</p>
-                <p class="font-light text-sm text-slate-dark opacity-75">Bergabung pada Juni 2026</p>
+                <h2 class=" font-bold text-slate-dark text-3xl">{{ Auth::user()-> name }}</h2>
+                <p class="font-light text-sm text-slate-dark opacity-75"> Bergabung pada {{ $tanggalGabungFormated }} </p>
             </div>
             @if (Auth::user()->role === 'artist')
                 <div class="bg-slate-muted/7 w-full min-h-20 rounded-xl px-5 py-4">
                     
-                    @if (Auth::user()->bio)
-                        <h2 class="text-slate-dark">{{ Auth::user()->bio }}</h2>
+                    @if (Auth::user()?->artistProfile?->bio)
+                        <h2 class="text-slate-dark">{{ Auth::user()->artistProfile->bio }}</h2>
                     
                     @else
                         <h2 class="text-slate-dark italic opacity-70">Artist belum membuat bio</h2>
