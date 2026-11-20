@@ -61,12 +61,8 @@ class ProfileController extends Controller
 
         $user->update([
             'name' => $request->name,
+            'bio' => $request->bio,
         ]);
-
-        ArtistProfile::updateOrCreate(
-            ['user_id' => $user->id],
-            ['bio' => $request->bio]   
-        );
 
         return redirect()->route('profile.setting')->with('success', 'Profil berhasil diperbarui!');
     }

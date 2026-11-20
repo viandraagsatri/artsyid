@@ -10,9 +10,12 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('banner_url')->nullable();
+            $table->string('foto_url')->nullable();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->text('bio')->nullable();
             $table->enum('role', ['user', 'artist', 'admin'])->default('user');
             $table->string('avatar_url')->nullable();
             $table->boolean('is_blocked')->default(false);
