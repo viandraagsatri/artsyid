@@ -12,6 +12,8 @@ class ArtistApplication extends Model
         'verification_file_url',
         'status',
         'admin_notes',
+        'created_at',
+        'updated_at',
     ];
 
     public function user(): BelongsTo

@@ -52,27 +52,27 @@
                         </div>
                     </a>
 
-                    <a href="#admin-payouts"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                    <a href="{{ route('admin.payouts.index') }}"
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs transition-colors {{ request()->routeIs('admin.payouts.*') ? 'bg-pastel-200 text-slate-dark border border-pastel-300 shadow-xs font-bold' : 'text-slate-body hover:text-slate-dark hover:bg-pastel-50 font-medium' }}">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-money-bill-transfer text-sm text-slate-400"></i>
+                            <i class="fa-solid fa-money-bill-transfer text-sm {{ request()->routeIs('admin.payouts.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Pencairan Payout</span>
                         </div>
-                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse">
+                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse"></span>
                     </a>
 
-                    <a href="#admin-payments"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                    <a href="{{ route('admin.payments.index') }}"
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs transition-colors {{ request()->routeIs('admin.payments.*') ? 'bg-pastel-200 text-slate-dark border border-pastel-300 shadow-xs font-bold' : 'text-slate-body hover:text-slate-dark hover:bg-pastel-50 font-medium' }}">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-file-invoice-dollar text-sm text-slate-400"></i>
+                            <i class="fa-solid fa-file-invoice-dollar text-sm {{ request()->routeIs('admin.payments.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Audit Transaksi</span>
                         </div>
                     </a>
 
-                    <a href="#admin-orders"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                    <a href="{{ route('admin.orders.index') }}"
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs transition-colors {{ request()->routeIs('admin.orders.*') ? 'bg-pastel-200 text-slate-dark border border-pastel-300 shadow-xs font-bold' : 'text-slate-body hover:text-slate-dark hover:bg-pastel-50 font-medium' }}">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-boxes-stacked text-sm text-slate-400"></i>
+                            <i class="fa-solid fa-boxes-stacked text-sm {{ request()->routeIs('admin.orders.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Semua Pesanan</span>
                         </div>
                     </a>
@@ -84,27 +84,27 @@
                         Verifikasi &amp; Laporan
                     </span>
 
-                    <a href="#admin-applications"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                    <a href="{{ route('admin.applications.index') }}"
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs transition-colors {{ request()->routeIs('admin.applications.*') ? 'bg-pastel-200 text-slate-dark border border-pastel-300 shadow-xs font-bold' : 'text-slate-body hover:text-slate-dark hover:bg-pastel-50 font-medium' }}">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-id-card-clip text-sm text-slate-400"></i>
+                            <i class="fa-solid fa-id-card-clip text-sm {{ request()->routeIs('admin.applications.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Verifikasi Artist</span>
                         </div>
-                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse">
+                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse"></span>
                     </a>
 
-                    <a href="#admin-reports"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                    <a href="{{ route('admin.reports.index') }}"
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs transition-colors {{ request()->routeIs('admin.reports.*') ? 'bg-pastel-200 text-slate-dark border border-pastel-300 shadow-xs font-bold' : 'text-slate-body hover:text-slate-dark hover:bg-pastel-50 font-medium' }}">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-triangle-exclamation text-sm text-slate-400"></i>
+                            <i class="fa-solid fa-triangle-exclamation text-sm {{ request()->routeIs('admin.reports.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Laporan Sengketa</span>
                         </div>
                     </a>
 
-                    <a href="#admin-users"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                    <a href="{{ route('admin.users.index') }}"
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs transition-colors {{ request()->routeIs('admin.users.*') ? 'bg-pastel-200 text-slate-dark border border-pastel-300 shadow-xs font-bold' : 'text-slate-body hover:text-slate-dark hover:bg-pastel-50 font-medium' }}">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-users text-sm text-slate-400"></i>
+                            <i class="fa-solid fa-users text-sm {{ request()->routeIs('admin.users.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Kelola Pengguna</span>
                         </div>
                     </a>
@@ -127,30 +127,30 @@
                         </div>
                     </a>
 
-                    <a href="#artist-orders"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                    <a href="{{ route('artist.orders.index') }}"
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs transition-colors {{ request()->routeIs('artist.orders.*') ? 'bg-pastel-200 text-slate-dark border border-pastel-300 shadow-xs font-bold' : 'text-slate-body hover:text-slate-dark hover:bg-pastel-50 font-medium' }}">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-inbox text-sm text-slate-400"></i>
+                            <i class="fa-solid fa-inbox text-sm {{ request()->routeIs('artist.orders.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Pesanan Masuk</span>
                         </div>
-                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse">
+                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse"></span>
                     </a>
 
-                    <a href="#artist-tracker"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                    <a href="{{ route('artist.tracker.index') }}"
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs transition-colors {{ request()->routeIs('artist.tracker.*') ? 'bg-pastel-200 text-slate-dark border border-pastel-300 shadow-xs font-bold' : 'text-slate-body hover:text-slate-dark hover:bg-pastel-50 font-medium' }}">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-stamp text-sm text-slate-400"></i>
+                            <i class="fa-solid fa-stamp text-sm {{ request()->routeIs('artist.tracker.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Unggah Draf WIP</span>
                         </div>
                     </a>
 
-                    <a href="#artist-payouts"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                    <a href="{{ route('artist.payouts.index') }}"
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs transition-colors {{ request()->routeIs('artist.payouts.*') ? 'bg-pastel-200 text-slate-dark border border-pastel-300 shadow-xs font-bold' : 'text-slate-body hover:text-slate-dark hover:bg-pastel-50 font-medium' }}">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-building-columns text-sm text-slate-400"></i>
+                            <i class="fa-solid fa-building-columns text-sm {{ request()->routeIs('artist.payouts.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Pencairan Dana</span>
                         </div>
-                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse">
+                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse"></span>
                     </a>
                 </div>
 
@@ -160,24 +160,24 @@
                         Katalog &amp; Etalase
                     </span>
 
-                    <a href="#artist-menus"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                    <a href="{{ route('artist.menus.index') }}"
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs transition-colors {{ request()->routeIs('artist.menus.*') ? 'bg-pastel-200 text-slate-dark border border-pastel-300 shadow-xs font-bold' : 'text-slate-body hover:text-slate-dark hover:bg-pastel-50 font-medium' }}">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-layer-group text-sm text-slate-400"></i>
+                            <i class="fa-solid fa-layer-group text-sm {{ request()->routeIs('artist.menus.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Paket Menu Komisi</span>
                         </div>
                     </a>
 
-                    <a href="#artist-portfolios"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                    <a href="{{ route('artist.portfolios.index') }}"
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs transition-colors {{ request()->routeIs('artist.portfolios.*') ? 'bg-pastel-200 text-slate-dark border border-pastel-300 shadow-xs font-bold' : 'text-slate-body hover:text-slate-dark hover:bg-pastel-50 font-medium' }}">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-images text-sm text-slate-400"></i>
+                            <i class="fa-solid fa-images text-sm {{ request()->routeIs('artist.portfolios.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Galeri Portofolio</span>
                         </div>
                     </a>
 
                     <a href="{{ route('profile') }}"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors {{ request()->routeIs('profile*') ? 'bg-pastel-100 text-slate-dark font-bold' : '' }}">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-file-contract text-sm text-slate-400"></i>
                             <span>Aturan ToS &amp; Rekening</span>
@@ -202,29 +202,28 @@
                         </div>
                     </a>
 
-                    <a href="#active-orders"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                    <a href="{{ route('user.orders.index') }}"
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs transition-colors {{ request()->routeIs('user.orders.*') ? 'bg-pastel-200 text-slate-dark border border-pastel-300 shadow-xs font-bold' : 'text-slate-body hover:text-slate-dark hover:bg-pastel-50 font-medium' }}">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-palette text-sm text-slate-400"></i>
+                            <i class="fa-solid fa-palette text-sm {{ request()->routeIs('user.orders.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Pesanan Saya</span>
                         </div>
-                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse">
-                        </span>
+                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse"></span>
                     </a>
 
-                    <a href="#invoices-section"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                    <a href="{{ route('user.invoices.index') }}"
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs transition-colors {{ request()->routeIs('user.invoices.*') ? 'bg-pastel-200 text-slate-dark border border-pastel-300 shadow-xs font-bold' : 'text-slate-body hover:text-slate-dark hover:bg-pastel-50 font-medium' }}">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-receipt text-sm text-slate-400"></i>
+                            <i class="fa-solid fa-receipt text-sm {{ request()->routeIs('user.invoices.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Tagihan &amp; Escrow</span>
                         </div>
-                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse">
+                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse"></span>
                     </a>
 
-                    <a href="#completed-downloads"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                    <a href="{{ route('user.completed.index') }}"
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs transition-colors {{ request()->routeIs('user.completed.*') ? 'bg-pastel-200 text-slate-dark border border-pastel-300 shadow-xs font-bold' : 'text-slate-body hover:text-slate-dark hover:bg-pastel-50 font-medium' }}">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-cloud-arrow-down text-sm text-slate-400"></i>
+                            <i class="fa-solid fa-cloud-arrow-down text-sm {{ request()->routeIs('user.completed.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Karya Selesai</span>
                         </div>
                     </a>
@@ -237,16 +236,16 @@
                     </span>
 
                     <a href="{{ route('katalog') }}"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors">
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-medium text-slate-body hover:text-slate-dark hover:bg-pastel-50 transition-colors {{ request()->routeIs('katalog*') ? 'bg-pastel-100 text-slate-dark font-bold' : '' }}">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-compass text-sm text-slate-400"></i>
+                            <i class="fa-solid fa-compass text-sm {{ request()->routeIs('katalog*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Katalog Komisi</span>
                         </div>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
                     </a>
 
                     <a href="{{ route('register.artist') }}"
-                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-bold text-amber-900 bg-pastel-100/60 hover:bg-pastel-100 border border-pastel-200 transition-colors">
+                        class="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-heading text-xs font-bold text-amber-900 bg-pastel-100/60 hover:bg-pastel-100 border border-pastel-200 transition-colors {{ request()->routeIs('register.artist*') ? 'bg-pastel-200' : '' }}">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-paintbrush text-sm text-amber-600"></i>
                             <span>Buka Toko Artist</span>
@@ -284,19 +283,19 @@
                 <div class="flex items-center gap-2.5 min-w-0">
                     @if(auth()->check() && auth()->user()->avatar_url)
                         <img src="{{ auth()->user()->avatar_url }}" alt="{{ auth()->user()->name }}"
-                            class="w-8 h-8 rounded-full object-cover ring-2 ring-pastel-300">
+                            class="w-8 h-8 rounded-full object-cover ring-2 ring-pastel-300 shrink-0">
                     @else
                         <div
-                            class="w-8 h-8 rounded-full bg-pastel-300 text-slate-dark flex items-center justify-center font-bold text-xs font-heading">
+                            class="w-8 h-8 rounded-full bg-pastel-300 text-slate-dark flex items-center justify-center font-bold text-xs font-heading shrink-0">
                             {{ strtoupper(substr(auth()->user()?->name ?? 'User', 0, 1)) }}
                         </div>
                     @endif
                     <div class="flex flex-col items-start min-w-0">
                         <span
-                            class="text-xs font-bold text-slate-dark group-hover:text-red-600! transition-colors truncate font-heading leading-tight w-full">
+                            class="text-xs text-start font-bold text-slate-dark group-hover:text-red-600! transition-colors truncate font-heading leading-tight w-full">
                             {{ auth()->user()?->name ?? 'Pengguna Artsy' }}
                         </span>
-                        <span class="text-[10px] text-slate-muted truncate">
+                        <span class="text-[10px] text-slate-muted w-full truncate">
                             {{ auth()->user()?->email ?? 'user@artsy.id' }}
                         </span>
                     </div>

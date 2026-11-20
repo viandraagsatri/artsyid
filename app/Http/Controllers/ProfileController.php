@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdatePasswordRequest;
+use App\Http\Requests\UpdateProfileRequest;
 use App\Models\User;
-use App\Models\ArtistProfile;
-use Illuminate\Http\Request;
+use App\Services\ProfileService;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -20,7 +21,7 @@ class ProfileController extends Controller
             return redirect()->route('profile.katalog');
         }
 
-        return view('404');
+        abort(404);
     }
 
     public function katalog() 
@@ -46,54 +47,27 @@ class ProfileController extends Controller
         return view('artist.profile.setting');
     }
 
-    public function updateProfile(Request $request)
+    public function updateProfile(UpdateProfileRequest $request, ProfileService $service)
     {
         if (Auth::user()->role !== 'artist') {
             return redirect()->route('profile');
         }
 
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'bio' => 'nullable|string',
-        ]);
-
         $user = User::findOrFail(Auth::id());
-
-        $user->update([
-            'name' => $request->name,
-            'bio' => $request->bio,
-        ]);
+        $service->updateProfile($user, $request->validated());
 
         return redirect()->route('profile.setting')->with('success', 'Profil berhasil diperbarui!');
     }
 
-    public function updatePw(Request $request)
+    public function updatePassword(UpdatePasswordRequest $request, ProfileService $service)
     {
         if (Auth::user()->role !== 'artist') {
             return redirect()->route('profile');
         }
 
-        $request->validate([
-            'current_password' => 'required|current_password', 
-            'password' => 'required|confirmed|min:8'
-        ], [
-            'current_password.current_password' => 'Password lama yang kamu masukkan salah.',
-            'password.confirmed' => 'Password baru dan konfirmasi tidak cocok.'
-        ]);
-        
-        $userLogin = Auth::user();
-        $user = User::findOrFail($userLogin);
-
-        $user->update([
-            'password' => bcrypt($request->password),
-        ]);
+        $user = User::findOrFail(Auth::id());
+        $service->updatePassword($user, $request->validated('password'));
 
         return back()->with('success', 'Password berhasil diubah!');
     }
-
-    // public function getPortofolio()
-    // {
-    //     $portofolios = Portofolio::where('artist_id', Auth::user()->id)->get();
-    //     return view('artist.profile.portofolio', compact('portofolios'));
-    // }
 }

@@ -24,7 +24,8 @@ return new class extends Migration
             $table->enum('request_type', ['custom', 'instant']);
             $table->enum('status', [
                 'pending_review', 'rejected', 'awaiting_dp', 'on_progress',
-                'review', 'revision', 'awaiting_final_payment', 'completed'
+                'review', 'revision', 'awaiting_final_payment', 'completed',
+                'cancelled', 'refunded'
             ])->default('pending_review');
             $table->text('rejection_reason')->nullable();
             $table->decimal('base_amount', 12, 2);

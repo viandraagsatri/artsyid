@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,19 +13,7 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function store(Request $request) {
-        $request->validate(
-            [
-                'email' => 'required|email',
-                'password' => 'required',
-            ],
-            [
-                'email.required' => 'Email wajib diisi!',
-                'email.email' => 'Format email tidak valid!',
-                'password.required' => 'Password wajib diisi!',
-            ]
-        );
-
+    public function store(LoginRequest $request) {
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
             return redirect()->intended('dashboard');

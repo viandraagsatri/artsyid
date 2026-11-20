@@ -33,11 +33,12 @@
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <a href="{{ route('register.artist') }}"
-                        class="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-dark bg-stone-100 hover:bg-pastel-100 border border-stone-200 transition-all font-heading">
-                        <span>Daftar Jadi Artist</span>
-                    </a>
-
+                    @if (auth()->check() && auth()->user()->role !== "artist")
+                        <a href="{{ route('register.artist') }}"
+                            class="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-dark bg-stone-100 hover:bg-pastel-100 border border-stone-200 transition-all font-heading">
+                            <span>Daftar Jadi Artist</span>
+                        </a>
+                    @endif
                     @auth
                         <div class="relative" x-data="{ open: false }">
                             <a href="{{ route('dashboard') }}"
@@ -96,10 +97,12 @@
                         Keunggulan
                     </a>
                     <div class="pt-3 mt-2 border-t border-stone-100 flex flex-col gap-2">
-                        <a href="{{ route('register.artist') }}"
-                            class="w-full text-center px-4 py-2.5 rounded-xl text-xs font-bold text-slate-dark bg-pastel-100 hover:bg-pastel-200 border border-pastel-200 transition">
-                            Daftar Jadi Artist
-                        </a>
+                        @if (auth()->check() && auth()->user()->role !== "artist")
+                            <a href="{{ route('register.artist') }}"
+                                class="w-full text-center px-4 py-2.5 rounded-xl text-xs font-bold text-slate-dark bg-pastel-100 hover:bg-pastel-200 border border-pastel-200 transition">
+                                Daftar Jadi Artist
+                            </a>
+                        @endif
                         @guest
                             <div class="grid grid-cols-2 gap-2 mt-1">
                                 <a href="{{ route('login') }}"

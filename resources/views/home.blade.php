@@ -2,7 +2,6 @@
 
 @section('content')
     @include('layouts.header')
-
     <main class="bg-bg-light min-h-screen text-slate-body font-sans">
         <section class="relative overflow-hidden bg-linear-to-b from-pastel-100/70 via-stone-50 to-bg-light border-b border-stone-200/60 pt-12 pb-16 lg:pt-16 lg:pb-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -637,6 +636,5 @@
             </div>
         </section>
     </main>
-    
     @include('layouts.footer')
 @endsection
