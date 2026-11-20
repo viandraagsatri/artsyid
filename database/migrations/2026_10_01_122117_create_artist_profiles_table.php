@@ -13,7 +13,6 @@ return new class extends Migration {
         Schema::create('artist_profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->unique()->constrained('users')->cascadeOnDelete();
-            $table->text('bio')->nullable();
             $table->string('bank_name', 100);
             $table->string('account_number', 100);
             $table->string('account_holder');

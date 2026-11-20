@@ -9,7 +9,6 @@ class ArtistProfile extends Model
 {
     protected $fillable = [
         'user_id',
-        'bio',
         'bank_name',
         'account_number',
         'account_holder',
