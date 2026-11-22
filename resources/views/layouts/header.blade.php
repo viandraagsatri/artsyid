@@ -40,6 +40,7 @@
                         </a>
                     @endif
                     @auth
+                        @include('layouts.partials.notification-bell')
                         <div class="relative" x-data="{ open: false }">
                             <a href="{{ route('dashboard') }}"
                                 class="flex items-center gap-2 p-1.5 pr-3 rounded-full hover:bg-stone-100 transition border border-stone-200">
@@ -181,12 +182,9 @@
         </div>
 
         <div class="flex items-center gap-3">
-            <button type="button"
-                class="relative w-9 h-9 rounded-xl border border-stone-200 text-slate-600 hover:text-slate-dark hover:bg-stone-50 transition flex items-center justify-center"
-                title="Notifikasi Baru">
-                <i class="fa-solid fa-bell text-xs"></i>
-                <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-amber-500 ring-2 ring-white"></span>
-            </button>
+            @auth
+                @include('layouts.partials.notification-bell')
+            @endauth
         </div>
     </header>
 

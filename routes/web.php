@@ -7,6 +7,7 @@ use App\Http\Controllers\DaftarArtist;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Katalog;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\Admin\ApplicationController as AdminApplicationController;
@@ -36,7 +37,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('lupa-password');
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'not_blocked']], function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/profile/katalog', [ProfileController::class, 'katalog'])->name('profile.katalog');
     Route::get('/profile/portofolio', [ProfileController::class, 'portofolio'])->name('profile.portofolio');
@@ -48,14 +49,25 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/register/artist', [DaftarArtist::class, 'index'])->name('register.artist');
     Route::post('/register/artist', [DaftarArtist::class, 'store'])->name('register.artist.post');
 
+    Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+    Route::post('/notifications/read-all', [NotificationController::class, 'markAllAsRead'])->name('notifications.readAll');
+    Route::post('/notifications/{notification}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');
+    Route::post('/notifications/{notification}/open', [NotificationController::class, 'open'])->name('notifications.open');
+
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
         Route::get('/payouts', [AdminPayoutController::class, 'index'])->name('payouts.index');
         Route::get('/payments', [AdminPaymentController::class, 'index'])->name('payments.index');
+        Route::get('/payments/export', [AdminPaymentController::class, 'export'])->name('payments.export');
+        Route::post('/payments/{payment}/approve', [AdminPaymentController::class, 'approve'])->name('payments.approve');
+        Route::post('/payments/{payment}/reject', [AdminPaymentController::class, 'reject'])->name('payments.reject');
         Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders.index');
         Route::get('/applications', [AdminApplicationController::class, 'index'])->name('applications.index');
         Route::post('/applications/{user}/verify', [AdminApplicationController::class, 'verify'])->name('applications.verify');
         Route::get('/reports', [AdminReportController::class, 'index'])->name('reports.index');
         Route::get('/users', [AdminUserController::class, 'index'])->name('users.index');
+        Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('users.update');
+        Route::post('/users/{user}/block', [AdminUserController::class, 'block'])->name('users.block');
+        Route::post('/users/{user}/unblock', [AdminUserController::class, 'unblock'])->name('users.unblock');
     });
 
     Route::group(['prefix' => 'artist', 'as' => 'artist.', 'middleware' => 'artist'], function () {

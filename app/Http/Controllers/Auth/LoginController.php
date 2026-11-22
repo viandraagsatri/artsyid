@@ -15,6 +15,18 @@ class LoginController extends Controller
 
     public function store(LoginRequest $request) {
         if (Auth::attempt($request->only('email', 'password'))) {
+            if (Auth::user()->is_blocked) {
+                $reason = Auth::user()->block_reason;
+
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+
+                $message = 'Akun Anda telah diblokir.' . ($reason ? "\nAlasan: " . $reason : '');
+
+                return back()->withInput($request->only('email'))->with('error', $message);
+            }
+
             $request->session()->regenerate();
             return redirect()->intended('dashboard');
         }

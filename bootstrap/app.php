@@ -4,6 +4,7 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\ArtistMiddleware;
 use App\Http\Middleware\AuthMiddleware;
 use App\Http\Middleware\ClientMiddleware;
+use App\Http\Middleware\EnsureUserNotBlocked;
 use App\Http\Middleware\GuestMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -21,6 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'user' => ClientMiddleware::class,
             'artist' => ArtistMiddleware::class,
             'admin' => AdminMiddleware::class,
+            'not_blocked' => EnsureUserNotBlocked::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

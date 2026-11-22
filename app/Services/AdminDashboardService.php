@@ -23,7 +23,7 @@ class AdminDashboardService
         $pendingPayoutsCount = Payout::where('status', 'pending')->count();
         $pendingPayoutsAmount = Payout::where('status', 'pending')->sum('amount');
 
-        $totalEscrowTransacted = Payment::whereIn('payment_status', ['settlement', 'capture', 'success'])
+        $totalEscrowTransacted = Payment::whereIn('payment_status', AdminPaymentService::SUCCESS_STATUSES)
             ->sum('amount');
 
         $activeOrdersCount = Order::whereIn('status', [

@@ -41,7 +41,7 @@
                     {{-- Menunggu Verifikasi --}}
                     <div class="bg-white p-5 rounded-2xl border border-stone-200/90 shadow-2xs flex items-center justify-between">
                         <div>
-                            <span class="text-xs text-slate-muted font-medium block">Pengajuan Artist Menunggu</span>
+                            <span class="text-xs text-slate-muted font-medium block">Pengajuan Artist</span>
                             <div class="flex items-baseline gap-2 mt-1">
                                 <span class="text-2xl font-black font-heading {{ $metrics['pendingApplicationsCount'] > 0 ? 'text-amber-600' : 'text-slate-dark' }}">
                                     {{ $metrics['pendingApplicationsCount'] }}
@@ -79,7 +79,7 @@
                         <div>
                             <span class="text-xs text-slate-muted font-medium block">Total Transaksi Escrow</span>
                             <div class="flex items-baseline gap-2 mt-1">
-                                <span class="text-xl sm:text-2xl font-black font-heading text-slate-dark">
+                                <span class="text-xl font-black font-heading text-slate-dark">
                                     Rp {{ number_format($metrics['totalEscrowTransacted'], 0, ',', '.') }}
                                 </span>
                             </div>

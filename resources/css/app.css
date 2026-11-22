@@ -38,15 +38,17 @@
     --color-status-info-text: #075985;
 }
 
-body {
-    font-family: var(--font-heading);
-    color: var(--color-slate-body);
-    background-color: var(--color-pastel-100);
-}
+@layer base {
+    body {
+        font-family: var(--font-heading);
+        color: var(--color-slate-body);
+        background-color: var(--color-pastel-100);
+    }
 
-h1, h2, h3, h4, h5, h6, .font-heading {
-    font-family: var(--font-heading);
-    color: var(--color-slate-dark);
+    h1, h2, h3, h4, h5, h6, .font-heading {
+        font-family: var(--font-heading);
+        color: var(--color-slate-dark);
+    }
 }
 
 .teks-isi {

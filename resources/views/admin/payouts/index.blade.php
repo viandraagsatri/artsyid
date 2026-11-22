@@ -17,7 +17,7 @@
             <main class="p-4 sm:p-6 lg:p-8 space-y-8 max-w-7xl w-full mx-auto">
                 <div class="bg-white rounded-2xl border border-stone-200/90 shadow-2xs p-6">
                     <h2 class="text-xl font-bold font-heading text-slate-dark">Pencairan Payout</h2>
-                    <p class="text-xs text-slate-muted mt-1">Kelola dan verifikasi transfer dana komisi (DP &amp; Pelunasan) ke rekening bank artist.</p>
+                    <p class="text-xs text-slate-muted mt-1">Kelola dan proses transfer pencairan dana komisi penuh ke rekening bank artist setelah pesanan dilunasi.</p>
                 </div>
                 <!-- ISI KONTENNYA DISINI YA ADIK ADIK -->
             </main>

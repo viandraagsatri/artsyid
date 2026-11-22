@@ -37,6 +37,8 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_blocked' => 'boolean',
+            'blocked_at' => 'datetime',
         ];
     }
 
@@ -93,6 +95,21 @@ class User extends Authenticatable
     public function reportsAgainst(): HasMany
     {
         return $this->hasMany(ArtistReport::class, 'artist_id');
+    }
+
+    public function payoutsProcessed(): HasMany
+    {
+        return $this->hasMany(Payout::class, 'processed_by_admin_id');
+    }
+
+    public function paymentsVerified(): HasMany
+    {
+        return $this->hasMany(Payment::class, 'verified_by_admin_id');
+    }
+
+    public function reportsHandled(): HasMany
+    {
+        return $this->hasMany(ArtistReport::class, 'handled_by_admin_id');
     }
 
     public function notifications(): HasMany

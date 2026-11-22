@@ -1,5 +1,8 @@
 @php
     $userRole = auth()->user()?->role;
+    $adminIndicators = $sidebarIndicators['admin'] ?? [];
+    $artistIndicators = $sidebarIndicators['artist'] ?? [];
+    $clientIndicators = $sidebarIndicators['user'] ?? [];
 @endphp
 
 <aside id="app-sidebar"
@@ -58,7 +61,12 @@
                             <i class="fa-solid fa-money-bill-transfer text-sm {{ request()->routeIs('admin.payouts.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Pencairan Payout</span>
                         </div>
-                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse"></span>
+                        @if(!empty($adminIndicators['payouts']))
+                            @include('layouts.partials.sidebar-indicator', [
+                                'key'   => 'admin.payouts',
+                                'label' => 'Ada antrean pencairan payout',
+                            ])
+                        @endif
                     </a>
 
                     <a href="{{ route('admin.payments.index') }}"
@@ -67,6 +75,12 @@
                             <i class="fa-solid fa-file-invoice-dollar text-sm {{ request()->routeIs('admin.payments.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Audit Transaksi</span>
                         </div>
+                        @if(!empty($adminIndicators['payments']))
+                            @include('layouts.partials.sidebar-indicator', [
+                                'key'   => 'admin.payments',
+                                'label' => 'Ada transaksi menunggu verifikasi atau audit',
+                            ])
+                        @endif
                     </a>
 
                     <a href="{{ route('admin.orders.index') }}"
@@ -90,7 +104,12 @@
                             <i class="fa-solid fa-id-card-clip text-sm {{ request()->routeIs('admin.applications.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Verifikasi Artist</span>
                         </div>
-                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse"></span>
+                        @if(!empty($adminIndicators['applications']))
+                            @include('layouts.partials.sidebar-indicator', [
+                                'key'   => 'admin.applications',
+                                'label' => 'Ada pengajuan artist menunggu verifikasi',
+                            ])
+                        @endif
                     </a>
 
                     <a href="{{ route('admin.reports.index') }}"
@@ -99,6 +118,13 @@
                             <i class="fa-solid fa-triangle-exclamation text-sm {{ request()->routeIs('admin.reports.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Laporan Sengketa</span>
                         </div>
+                        @if(!empty($adminIndicators['reports']))
+                            @include('layouts.partials.sidebar-indicator', [
+                                'key'     => 'admin.reports',
+                                'label'   => 'Ada laporan sengketa baru',
+                                'variant' => 'rose',
+                            ])
+                        @endif
                     </a>
 
                     <a href="{{ route('admin.users.index') }}"
@@ -133,7 +159,12 @@
                             <i class="fa-solid fa-inbox text-sm {{ request()->routeIs('artist.orders.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Pesanan Masuk</span>
                         </div>
-                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse"></span>
+                        @if(!empty($artistIndicators['orders']))
+                            @include('layouts.partials.sidebar-indicator', [
+                                'key'   => 'artist.orders',
+                                'label' => 'Ada pesanan baru menunggu konfirmasi',
+                            ])
+                        @endif
                     </a>
 
                     <a href="{{ route('artist.tracker.index') }}"
@@ -142,6 +173,12 @@
                             <i class="fa-solid fa-stamp text-sm {{ request()->routeIs('artist.tracker.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Unggah Draf WIP</span>
                         </div>
+                        @if(!empty($artistIndicators['tracker']))
+                            @include('layouts.partials.sidebar-indicator', [
+                                'key'   => 'artist.tracker',
+                                'label' => 'Ada progres atau revisi perlu diunggah',
+                            ])
+                        @endif
                     </a>
 
                     <a href="{{ route('artist.payouts.index') }}"
@@ -150,7 +187,12 @@
                             <i class="fa-solid fa-building-columns text-sm {{ request()->routeIs('artist.payouts.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Pencairan Dana</span>
                         </div>
-                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse"></span>
+                        @if(!empty($artistIndicators['payouts']))
+                            @include('layouts.partials.sidebar-indicator', [
+                                'key'   => 'artist.payouts',
+                                'label' => 'Ada antrean pencairan dana',
+                            ])
+                        @endif
                     </a>
                 </div>
 
@@ -208,7 +250,12 @@
                             <i class="fa-solid fa-palette text-sm {{ request()->routeIs('user.orders.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Pesanan Saya</span>
                         </div>
-                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse"></span>
+                        @if(!empty($clientIndicators['orders']))
+                            @include('layouts.partials.sidebar-indicator', [
+                                'key'   => 'user.orders',
+                                'label' => 'Ada progres WIP menunggu persetujuan',
+                            ])
+                        @endif
                     </a>
 
                     <a href="{{ route('user.invoices.index') }}"
@@ -217,7 +264,12 @@
                             <i class="fa-solid fa-receipt text-sm {{ request()->routeIs('user.invoices.*') ? 'text-slate-dark' : 'text-slate-400' }}"></i>
                             <span>Tagihan &amp; Escrow</span>
                         </div>
-                        <span class="rounded-full w-2 h-2 bg-pastel-400 animate-pulse"></span>
+                        @if(!empty($clientIndicators['invoices']))
+                            @include('layouts.partials.sidebar-indicator', [
+                                'key'   => 'user.invoices',
+                                'label' => 'Ada tagihan belum dibayar',
+                            ])
+                        @endif
                     </a>
 
                     <a href="{{ route('user.completed.index') }}"
