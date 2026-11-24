@@ -77,6 +77,7 @@ Route::group(['middleware' => ['auth', 'not_blocked']], function () {
         Route::get('/menus', [ArtistCommissionMenuController::class, 'index'])->name('menus.index');
         Route::get('/menus/form_create_menu', [ArtistCommissionMenuController::class, 'create_menu'])->name('menus.form_create_menu');
         Route::get('/portfolios', [ArtistPortfolioController::class, 'index'])->name('portfolios.index');
+        Route::get('/portfolios/form_create_portofolio', [ArtistPortfolioController::class, 'create_portofolio'])->name('portfolios.form_create_portofolio');
     });
 
     Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => 'user'], function () {
