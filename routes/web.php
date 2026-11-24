@@ -75,6 +75,7 @@ Route::group(['middleware' => ['auth', 'not_blocked']], function () {
         Route::get('/tracker', [ArtistTrackerController::class, 'index'])->name('tracker.index');
         Route::get('/payouts', [ArtistPayoutController::class, 'index'])->name('payouts.index');
         Route::get('/menus', [ArtistCommissionMenuController::class, 'index'])->name('menus.index');
+        Route::get('/menus/form_create_menu', [ArtistCommissionMenuController::class, 'create_menu'])->name('menus.form_create_menu');
         Route::get('/portfolios', [ArtistPortfolioController::class, 'index'])->name('portfolios.index');
     });
 
