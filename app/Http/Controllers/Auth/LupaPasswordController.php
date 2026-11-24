@@ -7,6 +7,6 @@ use App\Http\Controllers\Controller;
 class LupaPasswordController extends Controller
 {
     public function index() {
-        return view('auth.lupa-password');
+        return view('auth.lupa_password');
     }
 }

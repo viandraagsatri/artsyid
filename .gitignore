@@ -23,7 +23,6 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 
-# AI Guidelines
 PROJECT_BRIEF.md
 AGENTS.md
-.agents/rules/artsy-project-rules.md
+/.agents

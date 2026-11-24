@@ -33,12 +33,14 @@
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <a href="{{ route('register.artist') }}"
-                        class="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-dark bg-stone-100 hover:bg-pastel-100 border border-stone-200 transition-all font-heading">
-                        <span>Daftar Jadi Artist</span>
-                    </a>
-
+                    @if (auth()->check() && auth()->user()->role !== "artist")
+                        <a href="{{ route('register.artist') }}"
+                            class="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-dark bg-stone-100 hover:bg-pastel-100 border border-stone-200 transition-all font-heading">
+                            <span>Daftar Jadi Artist</span>
+                        </a>
+                    @endif
                     @auth
+                        @include('layouts.partials.notification-bell')
                         <div class="relative" x-data="{ open: false }">
                             <a href="{{ route('dashboard') }}"
                                 class="flex items-center gap-2 p-1.5 pr-3 rounded-full hover:bg-stone-100 transition border border-stone-200">
@@ -96,10 +98,12 @@
                         Keunggulan
                     </a>
                     <div class="pt-3 mt-2 border-t border-stone-100 flex flex-col gap-2">
-                        <a href="{{ route('register.artist') }}"
-                            class="w-full text-center px-4 py-2.5 rounded-xl text-xs font-bold text-slate-dark bg-pastel-100 hover:bg-pastel-200 border border-pastel-200 transition">
-                            Daftar Jadi Artist
-                        </a>
+                        @if (auth()->check() && auth()->user()->role !== "artist")
+                            <a href="{{ route('register.artist') }}"
+                                class="w-full text-center px-4 py-2.5 rounded-xl text-xs font-bold text-slate-dark bg-pastel-100 hover:bg-pastel-200 border border-pastel-200 transition">
+                                Daftar Jadi Artist
+                            </a>
+                        @endif
                         @guest
                             <div class="grid grid-cols-2 gap-2 mt-1">
                                 <a href="{{ route('login') }}"
@@ -178,12 +182,9 @@
         </div>
 
         <div class="flex items-center gap-3">
-            <button type="button"
-                class="relative w-9 h-9 rounded-xl border border-stone-200 text-slate-600 hover:text-slate-dark hover:bg-stone-50 transition flex items-center justify-center"
-                title="Notifikasi Baru">
-                <i class="fa-solid fa-bell text-xs"></i>
-                <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-amber-500 ring-2 ring-white"></span>
-            </button>
+            @auth
+                @include('layouts.partials.notification-bell')
+            @endauth
         </div>
     </header>
 

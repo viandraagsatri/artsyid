@@ -2,7 +2,6 @@
 
 @section('content')
     @include('layouts.header')
-
     <main class="bg-bg-light min-h-screen text-slate-body font-sans">
         <section class="relative overflow-hidden bg-linear-to-b from-pastel-100/70 via-stone-50 to-bg-light border-b border-stone-200/60 pt-12 pb-16 lg:pt-16 lg:pb-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -141,7 +140,7 @@
                             </div>
                             <h3 class="text-sm font-bold text-slate-dark mb-2 font-heading">Persetujuan Line Art</h3>
                             <p class="text-xs text-slate-muted leading-relaxed">
-                                Saat klien menyetujui tahap Line Art, Maka lanjut ketahap selanjutnya atau jika ada penambahan bisa dilakukan untuk melakukan penambahan item dan meng update invoice untuk biaya tambahan.
+                                Saat klien menyetujui tahap Line Art, pengerjaan lanjut ke pewarnaan sementara dana DP tetap aman di escrow. Jika ada permintaan tambahan, artist dapat menerbitkan dynamic invoice.
                             </p>
                         </div>
                         <div class="mt-4 pt-3 border-t border-stone-200 text-[11px] font-semibold text-sky-700 flex items-center gap-1.5">
@@ -157,7 +156,7 @@
                             </div>
                             <h3 class="text-sm font-bold text-slate-dark mb-2 font-heading">Pelunasan &amp; Unduh File Bersih</h3>
                             <p class="text-xs text-slate-muted leading-relaxed">
-                                Artis menyelesaikan pewarnaan &amp; rendering. Setelah disetujui, klien melunasi sisa tagihan. Akses berkas tanpa watermark terbuka seketika.
+                                Artis menyelesaikan pewarnaan &amp; rendering. Setelah disetujui dan klien melunasi sisa tagihan, akses berkas tanpa watermark terbuka serta dana komisi penuh dicairkan ke artist.
                             </p>
                         </div>
                         <div class="mt-4 pt-3 border-t border-stone-200 text-[11px] font-semibold text-indigo-700 flex items-center gap-1.5">
@@ -459,7 +458,7 @@
                                     <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
                                         <i class="fa-solid fa-check text-[11px]"></i>
                                     </div>
-                                    <span><strong>Dana Terlindungi Escrow:</strong> DP 50% aman tertampung di rekening sistem sampai tahap Line Art kamu setujui.</span>
+                                    <span><strong>Dana Terlindungi Escrow:</strong> DP 50% dan pelunasan aman tertampung di sistem sampai karya akhir selesai kamu setujui.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
@@ -503,7 +502,7 @@
                                     <div class="w-5 h-5 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
                                         <i class="fa-solid fa-check text-[11px]"></i>
                                     </div>
-                                    <span><strong>Pencairan DP di Akhir:</strong> Kamu bisa lebih leluasa mengerjakan proyek tanpa memikirkan uang di awal.</span>
+                                    <span><strong>Pencairan Dana Penuh di Akhir:</strong> Seluruh dana komisi (DP, pelunasan, dan add-on) dicairkan penuh oleh admin ke rekeningmu setelah klien menyelesaikan pelunasan.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <div class="w-5 h-5 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
@@ -564,13 +563,13 @@
 
                 <details class="group bg-white rounded-2xl border border-stone-200/90 shadow-xs hover:border-pastel-400 transition-all duration-200 overflow-hidden">
                     <summary class="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer list-none [&::-webkit-details-marker]:hidden font-heading font-bold text-slate-dark text-sm sm:text-base focus:outline-none">
-                        <span>Kapan artis menerima pencairan dana DP?</span>
+                        <span>Kapan artist menerima pencairan dana komisi?</span>
                         <div class="w-8 h-8 rounded-full bg-stone-100 group-open:bg-pastel-200 text-slate-600 group-open:text-slate-dark flex items-center justify-center shrink-0 transition-transform duration-200 group-open:rotate-180">
                             <i class="fa-solid fa-chevron-down text-xs"></i>
                         </div>
                     </summary>
                     <div class="px-5 sm:px-6 pb-5 sm:pb-6 pt-2 text-xs sm:text-sm text-slate-muted leading-relaxed font-sans border-t border-stone-100">
-                        Dana DP (50%) dicairkan oleh sistem ke rekening bank artis segera setelah Klien menyetujui tahap <strong>Akhir</strong>. Hal ini memberikan rasa aman bagi kedua pihak: Klien telah melihat wujud nyata karya sebelum dana awal keluar, dan artis menerima kompensasi atas kerja kerasnya.
+                        Seluruh dana komisi (DP 50%, pelunasan 50%, serta dynamic add-on yang disetujui) ditahan aman di rekening escrow selama proses pengerjaan dan dicairkan secara <strong>penuh 1 kali di akhir</strong> oleh Admin ke rekening bank artist setelah karya akhir disetujui dan klien menyelesaikan pelunasan.
                     </div>
                 </details>
 
@@ -637,6 +636,5 @@
             </div>
         </section>
     </main>
-    
     @include('layouts.footer')
 @endsection

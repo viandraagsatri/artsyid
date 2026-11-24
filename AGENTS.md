@@ -10,10 +10,7 @@
 - **3 Hak Akses (Multi-Role)**:
   1. **Client (User)**: Eksplorasi katalog & ToS artist, submit request komisi, membayar invoice DP & Pelunasan via Midtrans Snap, memantau linimasa progres (view-only), chat internal, meminta revisi terbatas, unduh karya final, memberi rating, ulasan, & tip, serta opsi mendaftar menjadi artist atau melapor artist bermasalah.
   2. **Artist**: Kelola profil, portofolio, rekening bank (pencairan dana), dan ToS. Membuat katalog komisi & paket add-ons. Meninjau request (terima/tolak). Mengunggah update berkas progres (otomatis diberi watermark oleh sistem). Menerbitkan dynamic invoice jika ada penambahan add-on di tengah jalan. Mengunggah berkas final tanpa watermark.
-  3. **Admin**: Verifikasi berkas pengajuan artist (`artist_applications`). Audit log transaksi & pesanan. Memproses pencairan dana (**Payout**) manual:
-     - Tahap 1: Pencairan DP (setelah tahap *Line Art* selesai & disetujui Client).
-     - Tahap 2: Pencairan Pelunasan (setelah Client menerima karya akhir).
-     Menindaklanjuti laporan pengguna (`artist_reports`) dan memblokir akun artist jika terbukti bermasalah atau mendapat > 3 laporan dari pembeli berbeda.
+  3. **Admin**: Verifikasi berkas pengajuan artist (`artist_applications`). Audit log transaksi & rekonsiliasi fallback pembayaran Midtrans. Memproses pencairan dana (**Payout**) penuh 1x ke rekening artist secara manual setelah karya akhir disetujui Client dan invoice pelunasan dibayar (`completed`). Memproses transfer refund manual jika pesanan dibatalkan/di-refund. Menindaklanjuti laporan pengguna (`artist_reports`) dan memblokir akun artist jika terbukti bermasalah atau mendapat > 3 laporan dari pembeli berbeda.
 
 ---
 
@@ -53,7 +50,7 @@ Database menggunakan PostgreSQL dengan 23 tabel terstruktur:
 14. `invoices`: Tagihan bertahap (`dp`, `final`, `dynamic`).
 15. `invoice_items`: Rincian item tagihan.
 16. `payments`: Transaksi pembayaran (amount, snap_token, payment_method, payment_status, payload json, proof_of_payment).
-17. `payouts`: Rekaman pencairan dana escrow dari admin ke rekening artist (`dp`, `final`).
+17. `payouts`: Rekaman pencairan dana escrow penuh dari admin ke rekening artist setelah pesanan selesai dan dilunasi (`payout_stage = 'final'`).
 18. `order_chats`: Chat internal antar Client & Artist per order.
 19. `notifications`: Notifikasi aktivitas sistem ke pengguna.
 20. `reviews`: Rating (1-5), ulasan teks, dan tip_amount untuk pesanan selesai.
@@ -86,11 +83,9 @@ Database menggunakan PostgreSQL dengan 23 tabel terstruktur:
 ```
 
 ### B. Alur Progress Tracker 4 Tahap & Proteksi Watermark
-Setiap pesanan memiliki linimasa 4 tahap wajib:
+Setiap pesanan memiliki linimasa 4 tahap wajib (seluruh dana DP tetap ditahan aman di Escrow hingga pesanan selesai dan dilunasi):
 1. **Tahap 1: Sketsa (*Sketch*)**
-2. **Tahap 2: Line Art** $\rightarrow$ **TITIK KRUSIAL PENCAIRAN DP**:
-   - Ketika Client menyetujui tahap Line Art, sistem **otomatis** membuat entri `payouts` dengan `payout_stage = 'dp'` dan status `pending`.
-   - Admin memeriksa bukti di dashboard dan mentransfer DP ke rekening artist.
+2. **Tahap 2: Line Art**
 3. **Tahap 3: Pewarnaan (*Coloring*)**
 4. **Tahap 4: Penyelesaian / Rendering (*Rendering*)**
 
@@ -114,7 +109,7 @@ Setiap pesanan memiliki linimasa 4 tahap wajib:
 [Status: 'completed']
        │
        ├─► Akses Unduh File Asli (Tanpa Watermark) Terbuka untuk Client
-       ├─► Sistem Mengantrekan Payout Pelunasan ke Admin untuk Artist
+       ├─► Sistem Mengantrekan Payout Penuh (DP + Pelunasan + Dynamic Add-on Lunas) ke Admin untuk Artist
        └─► Form Review, Rating, & Tip Aktif untuk Client
 ```
 
@@ -144,3 +139,15 @@ Setiap pesanan memiliki linimasa 4 tahap wajib:
 - Asset Compiling / Live Reload: `npm run dev` (atau `npm.cmd run dev` di Windows)
 - Migrasi Database: `php artisan migrate`
 - Background Queue Worker (Watermarking): `php artisan queue:listen`
+
+---
+
+## 7. STANDAR KUALITAS FITUR & PROTOKOL AUDIT
+1. **Relevansi Informasi & Konsistensi UI per Role**:
+   - Hanya tampilkan metrik, label, filter, dan tombol aksi yang benar-benar relevan dengan halaman dan role terkait (`user`, `artist`, `admin`). Jangan menampilkan data milik role lain tanpa konteks jelas.
+   - Pastikan tampilan, warna badge/status, dan visibilitas tombol aksi konsisten antara **desktop, mobile, dan modal**, serta selalu sinkron dengan aturan validasi di Backend.
+2. **Validasi Ketat di Backend (Bukan FE Saja)**:
+   - Setiap batasan aksi (misalnya batasan ubah role, blokir akun, status transaksi) wajib divalidasi di Form Request dan/atau Service Layer meski tombolnya sudah disembunyikan di UI.
+3. **Aturan Audit Sekali Tuntas & Terfokus**:
+   - Ketika pengguna meminta audit, **batasi cakupan audit hanya pada halaman/fitur yang baru saja dikerjakan**, kecuali pengguna secara eksplisit meminta audit keseluruhan sistem.
+   - Lakukan pemeriksaan menyeluruh **dalam satu putaran** (UI & build CSS, alur sistem & edge case, keamanan & validasi BE, kecocokan skema PostgreSQL, serta error/test) sebelum melapor agar tidak perlu audit berulang. Gunakan skill `artsy-page-audit` sebagai checklist baku.

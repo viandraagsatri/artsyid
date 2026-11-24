@@ -14,7 +14,7 @@
                 <div class="bg-green-500 text-white px-4 py-2 rounded-lg">{{ session('success') }}</div>
             @endif
             @if (session('error'))
-                <div class="bg-red-500 text-white px-4 py-2 rounded-lg">{{ session('error') }}</div>
+                <div class="bg-red-500 text-white px-4 py-2 rounded-lg whitespace-pre-line">{{ session('error') }}</div>
             @endif
         </div>
         <form action="{{ route('login.post') }}" method="POST" class="flex flex-col gap-5">
