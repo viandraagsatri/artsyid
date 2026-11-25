@@ -19,7 +19,25 @@
                     <h2 class="text-xl font-bold font-heading text-slate-dark">Karya Selesai</h2>
                     <p class="text-xs text-slate-muted mt-1">Unduh berkas akhir karya beresolusi penuh tanpa watermark dan berikan ulasan, rating, serta tip.</p>
                 </div>
-                <!-- Konten halaman akan diimplementasikan di sini -->
+                
+                <div class="flex flex-col justify-between gap-4 xl:flex-row xl:items-center">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button type="button" class="rounded-xl border border-slate-dark bg-slate-dark px-3.5 py-2.5 text-xs font-bold text-white sm:text-sm">
+                            Semua (2)
+                        </button>
+                        <button type="button" class="rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-xs font-medium text-slate-muted sm:text-sm">
+                            Belum Diulas (1)
+                        </button>
+                        <button type="button" class="rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-xs font-medium text-slate-muted sm:text-sm">
+                            Sudah Diulas (8)
+                        </button>
+                    </div>
+
+                    <input 
+                        type="text" 
+                        placeholder="Cari judul karya atau artist..." aria-label="Cari artist atau nomor pesanan" 
+                        class="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs text-slate-dark outline-none placeholder:text-slate-400 focus:border-amber-400 sm:w-64 sm:text-sm"
+                    /> 
             </main>
         </div>
     </div>
