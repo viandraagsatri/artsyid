@@ -76,6 +76,15 @@ Route::group(['middleware' => ['auth', 'not_blocked']], function () {
         Route::get('/payouts', [ArtistPayoutController::class, 'index'])->name('payouts.index');
         Route::get('/menus', [ArtistCommissionMenuController::class, 'index'])->name('menus.index');
         Route::get('/menus/form_create_menu', [ArtistCommissionMenuController::class, 'create_menu'])->name('menus.form_create_menu');
+        Route::post('/menus', [ArtistCommissionMenuController::class, 'store'])->name('menus.store');
+        Route::get('/menus/{menu}/edit', [ArtistCommissionMenuController::class, 'edit'])->whereNumber('menu')->name('menus.edit');
+        Route::put('/menus/{menu}', [ArtistCommissionMenuController::class, 'update'])->whereNumber('menu')->name('menus.update');
+        Route::patch('/menus/{menu}/toggle', [ArtistCommissionMenuController::class, 'toggle'])->whereNumber('menu')->name('menus.toggle');
+        Route::delete('/menus/{menu}', [ArtistCommissionMenuController::class, 'destroy'])->whereNumber('menu')->name('menus.destroy');
+        Route::post('/menus/{menu}/addons', [ArtistCommissionMenuController::class, 'storeAddon'])->whereNumber('menu')->name('menus.addons.store');
+        Route::put('/menus/{menu}/addons/{addon}', [ArtistCommissionMenuController::class, 'updateAddon'])->whereNumber(['menu', 'addon'])->name('menus.addons.update');
+        Route::delete('/menus/{menu}/addons/{addon}', [ArtistCommissionMenuController::class, 'destroyAddon'])->whereNumber(['menu', 'addon'])->name('menus.addons.destroy');
+        Route::delete('/menus/{menu}/samples/{sample}', [ArtistCommissionMenuController::class, 'destroySample'])->whereNumber(['menu', 'sample'])->name('menus.samples.destroy');
         Route::get('/portfolios', [ArtistPortfolioController::class, 'index'])->name('portfolios.index');
         Route::get('/portfolios/form_create_portofolio', [ArtistPortfolioController::class, 'create_portofolio'])->name('portfolios.form_create_portofolio');
     });
@@ -89,4 +98,8 @@ Route::group(['middleware' => ['auth', 'not_blocked']], function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/katalog', [Katalog::class, 'index'])->name('katalog');
-Route::get('/katalog/{id?}', [Katalog::class, 'detail'])->name('katalog.detail');
+Route::get('/katalog/{id}', [Katalog::class, 'detail'])->whereNumber('id')->name('katalog.detail');
+Route::get('/storage/commission-samples/{artistId}/{filename}', [ArtistCommissionMenuController::class, 'showSample'])
+    ->whereNumber('artistId')
+    ->where('filename', '[A-Za-z0-9_-]+\.(jpg|jpeg|png|webp|JPG|JPEG|PNG|WEBP)')
+    ->name('commission-samples.show');

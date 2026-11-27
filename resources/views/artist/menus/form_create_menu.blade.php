@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Tambah Paket Menu Komisi - Artist Artsy ID'])
 
 @section('content')
     <div class="flex h-screen overflow-hidden bg-bg-light text-slate-body font-sans">
@@ -14,147 +14,52 @@
 
         <div class="flex-1 flex flex-col h-screen overflow-y-auto min-w-0">
             @include('layouts.header')
-            <main class="p-4 sm:p-6 lg:p-8 space-y-6 max-w-7xl w-full mx-auto">
-            <div class="bg-light rounded-2xl border border-stone-200/90 shadow-2xs p-6">
-                <h2 class="text-xl font-bold font-heading text-slate-dark">Form Tambah Menu Katalog</h2>
-                <p class="text-xs text-slate-muted mt-1">Kelola paket layanan komisi Anda untuk ditampilkan pada profil publik dan etalase artist.</p>
-            </div>
 
-            <!-- form tambah menu -->
-            <form action="" method="POST" class="bg-light rounded-2xl border border-stone-200/90 shadow-2xs p-6 space-y-5">
+            <main class="p-4 sm:p-6 lg:p-8 space-y-6 max-w-5xl w-full mx-auto">
 
-                <!-- judul sm kategori -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-dark mb-1.5">
-                            Nama Paket / Menu <span class="text-red-500">*</span>
-                        </label>
-                        <input type="text"
-                            name="title"
-                            placeholder="Contoh: Full Body Anime Character"
-                            class="w-full rounded-xl border border-slate-muted/40 bg-light px-4 py-2.5 text-sm text-slate-dark placeholder:text-slate-muted/70 focus:border-slate-dark focus:outline-none transition-colors">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-dark mb-1.5">
-                            Kategori <span class="text-red-500">*</span>
-                        </label>
-                        <select name="category_id"
-                                class="w-full rounded-xl border border-slate-muted/40 bg-light px-4 py-2.5 text-sm text-slate-dark focus:border-slate-dark focus:outline-none transition-colors">
-                            <option value="">-- Pilih Kategori --</option>
-                            <option value="">Ilustrasi Digital</option>
-                            <option value="">Chibi & Emote</option>
-                            <option value="">Model 2D VTuber</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- base price sm persentase dp -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-dark mb-1.5">
-                            Harga Dasar (Rp) <span class="text-red-500">*</span>
-                        </label>
-                        <input type="number"
-                            name="base_price"
-                            placeholder="Contoh: 450000"
-                            class="w-full rounded-xl border border-slate-muted/40 bg-light px-4 py-2.5 text-sm text-slate-dark placeholder:text-slate-muted/70 focus:border-slate-dark focus:outline-none transition-colors">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-dark mb-1.5">
-                            Persentase DP (%) <span class="text-red-500">*</span>
-                        </label>
-                        <input type="number"
-                            name="dp_percentage"
-                            placeholder="Contoh: 50"
-                            class="w-full rounded-xl border border-slate-muted/40 bg-light px-4 py-2.5 text-sm text-slate-dark placeholder:text-slate-muted/70 focus:border-slate-dark focus:outline-none transition-colors">
-                    </div>
-                </div>
-
-                <!-- estimasi hari, maks revisi, slot -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-dark mb-1.5">
-                            Estimasi Pengerjaan (Hari) <span class="text-red-500">*</span>
-                        </label>
-                        <input type="number"
-                            name="estimated_days"
-                            placeholder="Contoh: 7"
-                            class="w-full rounded-xl border border-slate-muted/40 bg-light px-4 py-2.5 text-sm text-slate-dark placeholder:text-slate-muted/70 focus:border-slate-dark focus:outline-none transition-colors">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-dark mb-1.5">
-                            Maks. Revisi per Tahap <span class="text-red-500">*</span>
-                        </label>
-                        <input type="number"
-                            name="max_revision"
-                            placeholder="Contoh: 2"
-                            class="w-full rounded-xl border border-slate-muted/40 bg-light px-4 py-2.5 text-sm text-slate-dark placeholder:text-slate-muted/70 focus:border-slate-dark focus:outline-none transition-colors">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-dark mb-1.5">
-                            Slot Tersedia <span class="text-red-500">*</span>
-                        </label>
-                        <input type="number"
-                            name="available_slots"
-                            placeholder="Contoh: 3"
-                            class="w-full rounded-xl border border-slate-muted/40 bg-light px-4 py-2.5 text-sm text-slate-dark placeholder:text-slate-muted/70 focus:border-slate-dark focus:outline-none transition-colors">
-                    </div>
-                </div>
-
-                <!-- tipe request sm status aktif -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-end">
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-dark mb-1.5">
-                            Tipe Pemesanan <span class="text-red-500">*</span>
-                        </label>
-                        <select name="request_type"
-                                class="w-full rounded-xl border border-slate-muted/40 bg-light px-4 py-2.5 text-sm text-slate-dark focus:border-slate-dark focus:outline-none transition-colors">
-                            <option value="">-- Pilih Tipe --</option>
-                            <option value="custom">Custom</option>
-                            <option value="instant">Instant</option>
-                        </select>
-                    </div>
-
-                    <div class="rounded-xl border border-slate-muted/40 bg-slate-dark/2 px-4 py-2.5 flex items-center justify-between">
-                        <div>
-                            <label class="text-sm font-semibold text-slate-dark">
-                                Tampilkan di Etalase Publik
-                            </label>
-                            <p class="text-[11px] text-slate-muted">Menu dapat langsung dilihat dan dipesan oleh client</p>
-                        </div>
-                        <input type="checkbox"
-                            name="is_active"
-                            checked
-                            class="w-4 h-4 accent-slate-dark rounded cursor-pointer">
-                    </div>
-                </div>
-
-                <!-- deskripsi -->
                 <div>
-                    <label class="block text-sm font-semibold text-slate-dark mb-1.5">
-                        Deskripsi & Ketentuan Paket <span class="text-red-500">*</span>
-                    </label>
-                    <textarea name="description"
-                            rows="4"
-                            placeholder="Jelaskan detail yang didapatkan client..."
-                            class="w-full rounded-xl border border-slate-muted/40 bg-light px-4 py-2.5 text-sm text-slate-dark placeholder:text-slate-muted/70 focus:border-slate-dark focus:outline-none transition-colors"></textarea>
+                    <a href="{{ route('artist.menus.index') }}"
+                        class="inline-flex items-center gap-2 text-xs font-bold font-heading text-slate-muted hover:text-slate-dark transition min-h-11 sm:min-h-0">
+                        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                        <span>Kembali ke Daftar Paket Menu Komisi</span>
+                    </a>
                 </div>
 
-                <div class="flex items-center justify-end gap-3 pt-2">
-                    <a href=""
-                    class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-red-600 transition-all duration-200 ease-in-out hover:-translate-y-px hover:bg-red-800 hover:shadow-[0_4px_12px_rgba(220,38,38,0.35)]">
-                        Batal
-                    </a>
-                    <button type="submit" class="btn-primary cursor-pointer">
-                        Simpan Menu Katalog
-                    </button>
+                @if ($errors->any())
+                    <div role="alert" class="p-4 rounded-2xl bg-status-danger-bg border border-status-danger-border text-status-danger-text text-xs sm:text-sm font-semibold flex items-start justify-between gap-3 shadow-2xs">
+                        <div class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-triangle-exclamation text-base shrink-0 mt-0.5" aria-hidden="true"></i>
+                            <div>
+                                <p class="font-bold">Gagal menyimpan paket menu komisi:</p>
+                                <p class="mt-0.5 font-medium">{{ $errors->first() }}</p>
+                            </div>
+                        </div>
+                        <button type="button" onclick="this.parentElement.remove()" aria-label="Tutup peringatan"
+                            class="cursor-pointer min-w-11 min-h-11 sm:min-w-8 sm:min-h-8 rounded-lg hover:bg-red-100 flex items-center justify-center transition shrink-0">
+                            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                @endif
+
+                <div class="bg-white rounded-2xl border border-stone-200/90 shadow-2xs p-5 sm:p-6">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-pastel-100 border border-pastel-300 text-[11px] font-bold font-heading text-amber-900 mb-2">
+                        <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                        <span>Paket Baru</span>
+                    </span>
+                    <h1 class="text-xl sm:text-2xl font-black font-heading text-slate-dark">
+                        Tambah Paket Menu Komisi
+                    </h1>
+                    <p class="text-xs sm:text-sm text-slate-muted mt-1">
+                        Lengkapi detail paket, skema DP Escrow, kuota revisi, dan sampel gambar agar tampil rapi di etalase artist Anda.
+                    </p>
                 </div>
-            </form>
-        </main>
+
+                <form action="{{ route('artist.menus.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @include('artist.menus._form_fields', ['form' => $form, 'categories' => $categories])
+                </form>
+
+            </main>
         </div>
     </div>
 @endsection

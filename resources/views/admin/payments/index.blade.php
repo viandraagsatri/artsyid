@@ -83,7 +83,7 @@
                         <a href="{{ route('admin.payments.index') }}"
                             class="cursor-pointer min-h-11 sm:min-h-0 px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-slate-dark font-bold text-xs font-heading transition flex items-center justify-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-dark">
                             <i class="fa-solid fa-rotate text-xs" aria-hidden="true"></i>
-                            <span>Segarkan</span>
+                            <span>Refresh</span>
                         </a>
                     </div>
                 </div>
@@ -217,7 +217,7 @@
                             </a>
                         </div>
 
-                        <form action="{{ route('admin.payments.index') }}" method="GET" class="flex flex-wrap items-center gap-2">
+                        <form action="{{ route('admin.payments.index') }}" method="GET" class="flex flex-wrap items-center justify-end gap-2">
                             <input type="hidden" name="status" value="{{ $status }}">
                             <input type="hidden" name="invoice_type" value="{{ $invoiceType }}">
                             <input type="hidden" name="search" value="{{ $search }}">

@@ -38,7 +38,7 @@
 
         <nav class="flex-1 overflow-y-auto px-3 py-3 space-y-6 hide-scrollbar">
 
-            <!-- MENU ADMIN -->
+            <!-- Menu admin -->
             @if($userRole === 'admin')
                 <div class="space-y-1">
                     <span
@@ -136,7 +136,7 @@
                     </a>
                 </div>
 
-                <!-- MENU ARTIST -->
+                <!-- Menu artist -->
             @elseif($userRole === 'artist')
                 <div class="space-y-1">
                     <span
@@ -227,7 +227,7 @@
                     </a>
                 </div>
 
-                <!-- MENU CLIENT -->
+                <!-- Menu client -->
             @else
                 <div class="space-y-1">
                     <span
@@ -310,7 +310,7 @@
                 </div>
             @endif
 
-            <!-- MENU BERSAMA -->
+            <!-- Menu bersama -->
             <div class="space-y-1 pt-2 border-t border-stone-100">
                 <span
                     class="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-heading block mb-1">

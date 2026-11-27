@@ -9,11 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ArtistMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  Closure(Request): (Response)  $next
-     */
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::user()->role !== 'artist') {

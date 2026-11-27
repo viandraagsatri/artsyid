@@ -56,7 +56,7 @@
                         <a href="{{ route('admin.applications.index') }}"
                             class="cursor-pointer min-h-11 sm:min-h-0 px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-slate-dark font-bold text-xs font-heading transition flex items-center gap-2">
                             <i class="fa-solid fa-rotate text-xs" aria-hidden="true"></i>
-                            <span>Segarkan</span>
+                            <span>Refresh</span>
                         </a>
                     </div>
                 </div>

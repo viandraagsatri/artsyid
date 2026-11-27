@@ -16,29 +16,30 @@
                     </p>
 
                     <div class="mt-8 max-w-2xl mx-auto">
-                        <form action="#katalog" method="GET" class="relative flex flex-col sm:flex-row items-stretch p-2 bg-white rounded-2xl sm:rounded-full border border-stone-200 shadow-sm hover:border-pastel-400 focus-within:border-pastel-400 focus-within:ring-2 focus-within:ring-pastel-200 transition-all gap-2">
+                        <form action="{{ route('katalog') }}" method="GET" class="relative flex flex-col sm:flex-row items-stretch p-2 bg-white rounded-2xl sm:rounded-full border border-stone-200 shadow-sm hover:border-pastel-400 focus-within:border-pastel-400 focus-within:ring-2 focus-within:ring-pastel-200 transition-all gap-2">
                             <div class="flex items-center grow pl-3 gap-3">
-                                <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
+                                <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm" aria-hidden="true"></i>
                                 <input 
                                     type="text" 
                                     id="search-input"
-                                    name="q" 
+                                    name="search" 
                                     placeholder="Cari gaya anime, Live2D, Vtuber, atau nama artist..." 
                                     class="w-full py-2.5 text-xs sm:text-sm text-slate-dark placeholder-slate-400 bg-transparent focus:outline-none"
                                 />
                             </div>
-                            <button type="submit" class="px-6 py-3 rounded-xl sm:rounded-full bg-pastel-200 hover:bg-pastel-300 text-slate-dark font-bold text-xs sm:text-sm font-heading shadow-xs transition hover:shadow-sm shrink-0">
+                            <button type="submit" class="px-6 py-3 rounded-xl sm:rounded-full bg-pastel-200 hover:bg-pastel-300 text-slate-dark font-bold text-xs sm:text-sm font-heading shadow-xs transition hover:shadow-sm shrink-0 cursor-pointer">
                                 Cari Komisi
                             </button>
                         </form>
 
-                        <div class="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-slate-muted">
-                            <span class="font-medium text-slate-dark font-heading">Populer:</span>
-                            <a href="#katalog" class="px-2.5 py-1 rounded-lg bg-white border border-stone-200 hover:border-pastel-400 hover:bg-pastel-50 transition">Live2D Vtuber</a>
-                            <a href="#katalog" class="px-2.5 py-1 rounded-lg bg-white border border-stone-200 hover:border-pastel-400 hover:bg-pastel-50 transition">Bust-Up Anime</a>
-                            <a href="#katalog" class="px-2.5 py-1 rounded-lg bg-white border border-stone-200 hover:border-pastel-400 hover:bg-pastel-50 transition">3D VRChat</a>
-                            <a href="#katalog" class="px-2.5 py-1 rounded-lg bg-white border border-stone-200 hover:border-pastel-400 hover:bg-pastel-50 transition">Character Design</a>
-                        </div>
+                        @if (count($popularCategories) > 0)
+                            <div class="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-slate-muted">
+                                <span class="font-medium text-slate-dark font-heading">Populer:</span>
+                                @foreach ($popularCategories as $popCat)
+                                    <a href="{{ $popCat['katalog_url'] }}" class="px-2.5 py-1 rounded-lg bg-white border border-stone-200 hover:border-pastel-400 hover:bg-pastel-50 transition">{{ $popCat['name'] }}</a>
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                 </div>
 
@@ -183,35 +184,13 @@
             </div>
 
             <div class="flex items-center gap-3 overflow-x-auto pb-3 pt-1 hide-scrollbar">
-                <button class="shrink-0 flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-pastel-200 text-slate-dark border border-pastel-300 font-bold text-xs sm:text-sm font-heading shadow-xs transition hover:bg-pastel-300">
-                    <i class="fa-solid fa-fire text-amber-600 text-sm"></i>
-                    <span>Semua Kategori</span>
-                </button>
-
-                <button class="shrink-0 flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white text-slate-body border border-stone-200 hover:border-pastel-400 hover:bg-pastel-50 font-medium text-xs sm:text-sm font-heading transition">
-                    <i class="fa-solid fa-paint-brush text-rose-500 text-sm"></i>
-                    <span>Ilustrasi &amp; OC</span>
-                </button>
-
-                <button class="shrink-0 flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white text-slate-body border border-stone-200 hover:border-pastel-400 hover:bg-pastel-50 font-medium text-xs sm:text-sm font-heading transition">
-                    <i class="fa-solid fa-user-astronaut text-purple-600 text-sm"></i>
-                    <span>Model Live2D Vtuber</span>
-                </button>
-
-                <button class="shrink-0 flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white text-slate-body border border-stone-200 hover:border-pastel-400 hover:bg-pastel-50 font-medium text-xs sm:text-sm font-heading transition">
-                    <i class="fa-solid fa-cube text-emerald-600 text-sm"></i>
-                    <span>3D Avatar &amp; VRChat</span>
-                </button>
-
-                <button class="shrink-0 flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white text-slate-body border border-stone-200 hover:border-pastel-400 hover:bg-pastel-50 font-medium text-xs sm:text-sm font-heading transition">
-                    <i class="fa-solid fa-display text-fuchsia-500 text-sm"></i>
-                    <span>Overlay Streaming</span>
-                </button>
-
-                <button class="shrink-0 flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white text-slate-body border border-stone-200 hover:border-pastel-400 hover:bg-pastel-50 font-medium text-xs sm:text-sm font-heading transition">
-                    <i class="fa-solid fa-book-open text-amber-500 text-sm"></i>
-                    <span>Cover Musik &amp; Buku</span>
-                </button>
+                @foreach ($categories as $cat)
+                    <a href="{{ $cat['home_url'] }}"
+                        class="shrink-0 flex items-center gap-2.5 px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-heading transition {{ $cat['active'] ? 'bg-pastel-200 text-slate-dark border-pastel-300 font-bold shadow-xs hover:bg-pastel-300' : 'bg-white text-slate-body border-stone-200 hover:border-pastel-400 hover:bg-pastel-50 font-medium' }}">
+                        <i class="fa-solid {{ match($cat['slug']) { '' => 'fa-fire text-amber-600', 'ilustrasi-karakter' => 'fa-paint-brush text-rose-500', 'avatar-chibi-2d' => 'fa-face-smile-wink text-blue-500', 'model-live2d-vtuber' => 'fa-user-astronaut text-purple-600', 'emote-badge' => 'fa-icons text-emerald-600', default => 'fa-palette text-amber-500' } }} text-sm" aria-hidden="true"></i>
+                        <span>{{ $cat['name'] }}</span>
+                    </a>
+                @endforeach
             </div>
         </section>
 
@@ -224,207 +203,112 @@
                     <p class="text-xs text-slate-muted mt-0.5">Semua layanan dilindungi oleh Escrow &amp; Watermark Progres</p>
                 </div>
 
-                <div class="flex items-center gap-3">
-                    <span class="text-xs text-slate-muted font-medium hidden sm:inline">Urutkan:</span>
-                    <select class="text-xs font-semibold text-slate-dark bg-white border border-stone-200 rounded-xl py-2 px-3 focus:outline-none focus:ring-1 focus:ring-pastel-300">
-                        <option>Paling Relevan</option>
-                        <option>Rating Tertinggi</option>
-                        <option>Harga: Terendah ke Tertinggi</option>
-                        <option>Slot Terbaru</option>
+                <form action="{{ route('home') }}#katalog" method="GET" class="flex items-center gap-3">
+                    @if ($activeCategory !== '')
+                        <input type="hidden" name="category" value="{{ $activeCategory }}">
+                    @endif
+                    <label for="home-sort-select" class="text-xs text-slate-muted font-medium hidden sm:inline">Urutkan:</label>
+                    <select id="home-sort-select" name="sort" onchange="this.form.submit()" class="text-xs font-semibold text-slate-dark bg-white border border-stone-200 rounded-xl py-2 px-3 focus:outline-none focus:ring-1 focus:ring-pastel-300 cursor-pointer">
+                        @foreach ($sortOptions as $opt)
+                            <option value="{{ $opt['value'] }}" {{ $opt['selected'] ? 'selected' : '' }}>{{ $opt['label'] }}</option>
+                        @endforeach
                     </select>
-                </div>
+                </form>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-                <article class="bg-white rounded-2xl overflow-hidden border border-stone-200/90 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col group">
-                    <a href="{{ route('katalog.detail') }}" class="relative aspect-4/3 bg-stone-100 overflow-hidden block">
-                        <img 
-                            src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80" 
-                            alt="Bust-up Anime Karakter Fantasy" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/60 text-white/90 text-[10px] font-sans backdrop-blur-xs">
-                            <i class="fa-solid fa-clock text-[9px] mr-1"></i>5 Hari
-                        </span>
-                    </a>
-
-                    <div class="p-4 flex flex-col grow justify-between bg-white">
-                        <div>
-                            <div class="flex items-center gap-2 mb-2">
-                                <div class="w-6 h-6 rounded-full bg-pastel-300 text-slate-dark font-bold text-[10px] flex items-center justify-center font-heading">
-                                    R
+                @forelse ($menuCards as $card)
+                    <article class="bg-white rounded-2xl overflow-hidden border border-stone-200/90 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col group">
+                        <a href="{{ $card['detail_url'] }}" class="relative aspect-4/3 bg-stone-100 overflow-hidden block">
+                            @if ($card['thumbnail_url'])
+                                <img
+                                    src="{{ $card['thumbnail_url'] }}"
+                                    alt="{{ $card['title'] }}"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                />
+                            @else
+                                <div class="w-full h-full flex flex-col items-center justify-center text-slate-muted gap-1.5">
+                                    <i class="fa-regular fa-image text-2xl" aria-hidden="true"></i>
+                                    <span class="text-[11px] font-medium">Sampel belum tersedia</span>
                                 </div>
-                                <span class="text-xs font-semibold text-slate-dark truncate">@rafly.art</span>
-                                <i class="fa-solid fa-circle-check text-amber-500 text-[11px]" title="Artis Terverifikasi"></i>
-                            </div>
-
-                            <h3 class="text-sm font-bold text-slate-dark group-hover:text-amber-700 line-clamp-2 transition-colors font-heading">
-                                <a href="{{ route('katalog.detail') }}">Anime Karakter Fantasy</a>
-                            </h3>
-
-                            <div class="flex items-center gap-1.5 mt-2 text-xs text-slate-body">
-                                <i class="fa-solid fa-star text-amber-400 text-xs"></i>
-                                <span class="font-bold text-slate-dark">5.0</span>
-                                <span class="text-slate-muted text-[11px]">(52 pesanan)</span>
-                            </div>
-                        </div>
-
-                        <div class="pt-3 mt-3 border-t border-stone-100 flex items-center justify-between">
-                            <div>
-                                <span class="text-[10px] text-slate-muted block">Mulai dari</span>
-                                <span class="text-sm font-extrabold text-slate-dark font-heading">Rp 350.000</span>
-                            </div>
-                            <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2 py-0.5 rounded text-[10px] font-bold">
-                                <i class="fa-solid fa-shield-halved text-[9px]"></i>
-                                DP Rp 175rb
+                            @endif
+                            <span class="absolute top-3 left-3 {{ $card['is_open_slot'] ? 'bg-emerald-600/90' : 'bg-amber-600/90' }} text-white font-bold text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider backdrop-blur-xs font-heading">
+                                {{ $card['is_open_slot'] ? 'Buka Slot' : 'Slot Penuh' }}
                             </span>
-                        </div>
-                    </div>
-                </article>
+                            <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-slate-dark/80 text-white text-[10px] font-sans backdrop-blur-xs">
+                                <i class="fa-solid fa-clock text-[9px] mr-1" aria-hidden="true"></i>{{ $card['estimated_days'] }} Hari
+                            </span>
+                        </a>
 
-                <article class="bg-white rounded-2xl overflow-hidden border border-stone-200/90 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col group">
-                    <div class="relative aspect-4/3 bg-stone-100 overflow-hidden">
-                        <img 
-                            src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80" 
-                            alt="Model Live2D Ready-to-Rig Vtuber" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/60 text-white/90 text-[10px] font-sans backdrop-blur-xs">
-                            <i class="fa-solid fa-clock text-[9px] mr-1"></i>14 Hari
-                        </span>
-                    </div>
-
-                    <div class="p-4 flex flex-col grow justify-between bg-white">
-                        <div>
-                            <div class="flex items-center gap-2 mb-2">
-                                <div class="w-6 h-6 rounded-full bg-indigo-200 text-indigo-900 font-bold text-[10px] flex items-center justify-center font-heading">
-                                    R
+                        <div class="p-4 flex flex-col grow justify-between bg-white">
+                            <div>
+                                <div class="flex items-center gap-2 mb-2">
+                                    @if ($card['artist_avatar_url'])
+                                        <img src="{{ $card['artist_avatar_url'] }}" alt="{{ $card['artist_name'] }}" class="w-6 h-6 rounded-full object-cover ring-1 ring-pastel-300 shrink-0">
+                                    @else
+                                        <div class="w-6 h-6 rounded-full bg-pastel-300 text-slate-dark font-bold text-[10px] flex items-center justify-center font-heading shrink-0">
+                                            {{ $card['artist_initial'] }}
+                                        </div>
+                                    @endif
+                                    <span class="text-xs font-semibold text-slate-dark truncate">{{ $card['artist_name'] }}</span>
+                                    <i class="fa-solid fa-circle-check text-amber-500 text-[11px] shrink-0" title="Artis Terverifikasi"></i>
                                 </div>
-                                <span class="text-xs font-semibold text-slate-dark truncate">@rafly.art</span>
-                                <i class="fa-solid fa-circle-check text-amber-500 text-[11px]" title="Artis Terverifikasi"></i>
-                            </div>
 
-                            <h3 class="text-sm font-bold text-slate-dark group-hover:text-amber-700 line-clamp-2 transition-colors font-heading">
-                                Model Live2D Vtuber
-                            </h3>
+                                <h3 class="text-sm font-bold text-slate-dark group-hover:text-amber-700 line-clamp-2 transition-colors font-heading">
+                                    <a href="{{ $card['detail_url'] }}">{{ $card['title'] }}</a>
+                                </h3>
 
-                            <div class="flex items-center gap-1.5 mt-2 text-xs text-slate-body">
-                                <i class="fa-solid fa-star text-amber-400 text-xs"></i>
-                                <span class="font-bold text-slate-dark">4.9</span>
-                                <span class="text-slate-muted text-[11px]">(28 pesanan)</span>
-                            </div>
-                        </div>
-
-                        <div class="pt-3 mt-3 border-t border-stone-100 flex items-center justify-between">
-                            <div>
-                                <span class="text-[10px] text-slate-muted block">Mulai dari</span>
-                                <span class="text-sm font-extrabold text-slate-dark font-heading">Rp 1.750.000</span>
-                            </div>
-                            <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2 py-0.5 rounded text-[10px] font-bold">
-                                <i class="fa-solid fa-shield-halved text-[9px]"></i>
-                                DP Rp 875rb
-                            </span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="bg-white rounded-2xl overflow-hidden border border-stone-200/90 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col group">
-                    <div class="relative aspect-4/3 bg-stone-100 overflow-hidden">
-                        <img 
-                            src="https://images.unsplash.com/photo-1563089145-599997674d42?w=600&auto=format&fit=crop&q=80" 
-                            alt="Paket Emote Chibi Twitch" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/60 text-white/90 text-[10px] font-sans backdrop-blur-xs">
-                            <i class="fa-solid fa-clock text-[9px] mr-1"></i>3 Hari
-                        </span>
-                    </div>
-
-                    <div class="p-4 flex flex-col grow justify-between bg-white">
-                        <div>
-                            <div class="flex items-center gap-2 mb-2">
-                                <div class="w-6 h-6 rounded-full bg-rose-200 text-rose-900 font-bold text-[10px] flex items-center justify-center font-heading">
-                                    R
+                                <div class="flex items-center gap-1.5 mt-2 text-xs text-slate-body">
+                                    @if ($card['avg_rating_formatted'] !== null)
+                                        <i class="fa-solid fa-star text-amber-400 text-xs" aria-hidden="true"></i>
+                                        <span class="font-bold text-slate-dark">{{ $card['avg_rating_formatted'] }}</span>
+                                        <span class="text-slate-muted text-[11px]">({{ $card['reviews_count'] }} ulasan)</span>
+                                    @else
+                                        <i class="fa-regular fa-star text-slate-400 text-xs" aria-hidden="true"></i>
+                                        <span class="text-slate-muted text-[11px]">Belum ada ulasan</span>
+                                        @if ($card['completed_orders_count'] > 0)
+                                            <span class="text-slate-muted text-[11px]">• {{ $card['completed_orders_count'] }} pesanan</span>
+                                        @endif
+                                    @endif
                                 </div>
-                                <span class="text-xs font-semibold text-slate-dark truncate">@rafly.art</span>
-                                <i class="fa-solid fa-circle-check text-amber-500 text-[11px]" title="Artis Terverifikasi"></i>
                             </div>
 
-                            <h3 class="text-sm font-bold text-slate-dark group-hover:text-amber-700 line-clamp-2 transition-colors font-heading">
-                                Paket 5 Emote Chibi Lucu untuk Twitch &amp; Discord
-                            </h3>
-
-                            <div class="flex items-center gap-1.5 mt-2 text-xs text-slate-body">
-                                <i class="fa-solid fa-star text-amber-400 text-xs"></i>
-                                <span class="font-bold text-slate-dark">5.0</span>
-                                <span class="text-slate-muted text-[11px]">(84 pesanan)</span>
-                            </div>
-                        </div>
-
-                        <div class="pt-3 mt-3 border-t border-stone-100 flex items-center justify-between">
-                            <div>
-                                <span class="text-[10px] text-slate-muted block">Mulai dari</span>
-                                <span class="text-sm font-extrabold text-slate-dark font-heading">Rp 250.000</span>
-                            </div>
-                            <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2 py-0.5 rounded text-[10px] font-bold">
-                                <i class="fa-solid fa-shield-halved text-[9px]"></i>
-                                DP Rp 125rb
-                            </span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="bg-white rounded-2xl overflow-hidden border border-stone-200/90 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col group">
-                    <div class="relative aspect-4/3 bg-stone-100 overflow-hidden">
-                        <img 
-                            src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80" 
-                            alt="Avatar 3D Low-Poly VRChat" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/60 text-white/90 text-[10px] font-sans backdrop-blur-xs">
-                            <i class="fa-solid fa-clock text-[9px] mr-1"></i>10 Hari
-                        </span>
-                    </div>
-
-                    <div class="p-4 flex flex-col grow justify-between bg-white">
-                        <div>
-                            <div class="flex items-center gap-2 mb-2">
-                                <div class="w-6 h-6 rounded-full bg-emerald-200 text-emerald-900 font-bold text-[10px] flex items-center justify-center font-heading">
-                                    R
+                            <div class="pt-3 mt-3 border-t border-stone-100 flex items-center justify-between gap-2">
+                                <div>
+                                    <span class="text-[10px] text-slate-muted block">Mulai dari</span>
+                                    <span class="text-sm font-extrabold text-slate-dark font-heading tabular-nums">Rp {{ number_format($card['base_price'], 0, ',', '.') }}</span>
                                 </div>
-                                <span class="text-xs font-semibold text-slate-dark truncate">@rafly.art</span>
-                                <i class="fa-solid fa-circle-check text-amber-500 text-[11px]" title="Artis Terverifikasi"></i>
-                            </div>
-
-                            <h3 class="text-sm font-bold text-slate-dark group-hover:text-amber-700 line-clamp-2 transition-colors font-heading">
-                                Avatar 3D Stylized VRChat
-                            </h3>
-
-                            <div class="flex items-center gap-1.5 mt-2 text-xs text-slate-body">
-                                <i class="fa-solid fa-star text-amber-400 text-xs"></i>
-                                <span class="font-bold text-slate-dark">4.8</span>
-                                <span class="text-slate-muted text-[11px]">(19 pesanan)</span>
+                                <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2 py-0.5 rounded text-[10px] font-bold shrink-0">
+                                    <i class="fa-solid fa-shield-halved text-[9px]" aria-hidden="true"></i>
+                                    {{ $card['dp_short_label'] }}
+                                </span>
                             </div>
                         </div>
-
-                        <div class="pt-3 mt-3 border-t border-stone-100 flex items-center justify-between">
-                            <div>
-                                <span class="text-[10px] text-slate-muted block">Mulai dari</span>
-                                <span class="text-sm font-extrabold text-slate-dark font-heading">Rp 1.200.000</span>
-                            </div>
-                            <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2 py-0.5 rounded text-[10px] font-bold">
-                                <i class="fa-solid fa-shield-halved text-[9px]"></i>
-                                DP Rp 600rb
-                            </span>
+                    </article>
+                @empty
+                    <div class="col-span-full bg-white rounded-2xl border border-stone-200/90 p-8 text-center space-y-3">
+                        <div class="w-12 h-12 rounded-2xl bg-pastel-100 border border-pastel-300 text-amber-900 flex items-center justify-center mx-auto text-lg">
+                            <i class="fa-solid fa-palette" aria-hidden="true"></i>
                         </div>
+                        <h3 class="text-sm sm:text-base font-bold font-heading text-slate-dark">
+                            Belum Ada Paket Komisi pada Kategori Ini
+                        </h3>
+                        <p class="text-xs text-slate-muted max-w-md mx-auto">
+                            Pilih kategori lain atau lihat seluruh katalog layanan yang tersedia di Artsy ID.
+                        </p>
+                        @if ($activeCategory !== '')
+                            <a href="{{ route('home') }}#katalog" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-pastel-200 hover:bg-pastel-300 text-slate-dark font-bold text-xs font-heading transition">
+                                Tampilkan Semua Kategori
+                            </a>
+                        @endif
                     </div>
-                </article>
+                @endforelse
             </div>
 
             <div class="mt-12 text-center">
                 <a href="{{ route('katalog') }}" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white hover:bg-pastel-100 text-slate-dark border border-stone-300 font-bold text-xs sm:text-sm font-heading shadow-xs transition hover:shadow-sm">
-                    <span>Eksplorasi Ratusan Artist Lainnya</span>
-                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                    <span>Jelajahi Semua Layanan ({{ $totalPublicMenus }} Paket)</span>
+                    <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
                 </a>
             </div>
         </section>

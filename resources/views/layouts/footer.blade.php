@@ -38,13 +38,13 @@
                 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-dark mb-3.5 font-heading">Eksplorasi
                     Seni</h4>
                 <ul class="space-y-2.5 text-xs text-slate-muted font-sans">
-                    <li><a class="hover:text-slate-dark hover:underline transition" href="#katalog">Katalog Komisi</a>
+                    <li><a class="hover:text-slate-dark hover:underline transition" href="{{ route('katalog') }}">Katalog Komisi</a>
                     </li>
-                    <li><a class="hover:text-slate-dark hover:underline transition" href="#kategori">Ilustrasi &amp;
+                    <li><a class="hover:text-slate-dark hover:underline transition" href="{{ route('home') }}#kategori">Ilustrasi &amp;
                             Karakter OC</a></li>
-                    <li><a class="hover:text-slate-dark hover:underline transition" href="#kategori">Model Live2D
+                    <li><a class="hover:text-slate-dark hover:underline transition" href="{{ route('home') }}#kategori">Model Live2D
                             Vtuber</a></li>
-                    <li><a class="hover:text-slate-dark hover:underline transition" href="#kategori">3D Avatar &amp;
+                    <li><a class="hover:text-slate-dark hover:underline transition" href="{{ route('home') }}#kategori">3D Avatar &amp;
                             VRChat</a></li>
                 </ul>
             </div>
@@ -55,13 +55,13 @@
                 <ul class="space-y-2.5 text-xs text-slate-muted font-sans">
                     <li><a class="hover:text-slate-dark hover:underline transition"
                             href="{{ route('register') }}">Pendaftaran Akun Artist</a></li>
-                    <li><a class="hover:text-slate-dark hover:underline transition" href="#cara-kerja">Pencairan
+                    <li><a class="hover:text-slate-dark hover:underline transition" href="{{ route('home') }}#cara-kerja">Pencairan
                             Dana</a></li>
-                    <li><a class="hover:text-slate-dark hover:underline transition" href="#keunggulan">Fitur Dynamic
+                    <li><a class="hover:text-slate-dark hover:underline transition" href="{{ route('home') }}#keunggulan">Fitur Dynamic
                             Invoice</a></li>
-                    <li><a class="hover:text-slate-dark hover:underline transition" href="#keunggulan">Proteksi
+                    <li><a class="hover:text-slate-dark hover:underline transition" href="{{ route('home') }}#keunggulan">Proteksi
                             Watermark</a></li>
-                    <li><a class="hover:text-slate-dark hover:underline transition" href="#cara-kerja">Batas Revisi</a>
+                    <li><a class="hover:text-slate-dark hover:underline transition" href="{{ route('home') }}#cara-kerja">Batas Revisi</a>
                     </li>
                 </ul>
             </div>
@@ -70,9 +70,9 @@
                 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-dark mb-3.5 font-heading">Keamanan
                     &amp; Bantuan</h4>
                 <ul class="space-y-2.5 text-xs text-slate-muted font-sans">
-                    <li><a class="hover:text-slate-dark hover:underline transition" href="#cara-kerja">Mekanisme
+                    <li><a class="hover:text-slate-dark hover:underline transition" href="{{ route('home') }}#cara-kerja">Mekanisme
                             Rekening Escrow</a></li>
-                    <li><a class="hover:text-slate-dark hover:underline transition" href="#keunggulan">Kebijakan
+                    <li><a class="hover:text-slate-dark hover:underline transition" href="{{ route('home') }}#keunggulan">Kebijakan
                             Larangan Generative AI</a></li>
                     <li><a class="hover:text-slate-dark hover:underline transition" href="{{ route('login') }}">Pusat
                             Bantuan &amp; Laporan</a></li>
